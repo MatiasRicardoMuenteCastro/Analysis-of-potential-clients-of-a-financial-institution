@@ -150,7 +150,7 @@ if (Bank_Data.duplicated().sum() > 0):
 
 #Cria agrupamentos nas colunas AGE, BALANCE, DURATION e CAMPAIGN
 Bank_Data['age_agroupment'] = pd.cut(x = Bank_Data['age'], bins = [18,24,30,36,42,48,54,60,66,72,78,84,90,96], right= False)
-Bank_Data['balance_agroupment'] = pd.cut(x = Bank_Data['balance'], bins = [-8500,-7500,-6500,-5500,-4500,-3500,-2500,-2000,-1500,-1000,-500,0,500,1000,2000,4000,6000,8000,10000,15000,20000,30000,40000,50000,60000,70000,80000,90000,100000,105000])
+Bank_Data['balance_agroupment'] = pd.cut(x = Bank_Data['balance'], bins = [-30000,-20000,-15000,-10000,-8000,-6000,-4000,-2000,-1000,-500,0,500,1000,2000,4000,6000,8000,10000,15000,20000,30000,40000,50000,60000,70000,80000,90000,100000,105000])
 Bank_Data['duration_agroupment'] = pd.cut(x = Bank_Data['duration'], bins = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000,1200,1400,1600,1800,2000,2400,2600,2800,3000,3200,3400,3500,4000,4500,5000],right= False)
 Bank_Data['campaign_agroupment'] = pd.cut(x = Bank_Data['campaign'],bins = [0,2,4,6,8,9,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50])
 Bank_Data['previous_agroupment'] = pd.cut(x = Bank_Data['previous'],bins = [0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80], right = False)

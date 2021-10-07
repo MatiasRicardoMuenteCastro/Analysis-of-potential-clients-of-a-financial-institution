@@ -4,11 +4,18 @@ import matplotlib.pyplot as plt
 
 #Plota o gráfico dos saldos de cada faixa etária
 def AgeWithBalance(Bank_Data):
+    custom_style = {'axes.labelcolor': 'black',
+                    'xtick.color': '#3b157e',
+                    'ytick.color': '#3b157e'}
+    new_style = {'grid': False}
     Bank_Data = Bank_Data.sort_values('age')
+    #divergning = sns.diverging_palette(250, 15, s=75, l=40,n=9, center= "dark")
     plt.figure(figsize = (13,8))
     plt.style.use("ggplot")
-    plt.title("Faixa de saldo por ano em relação a idade dos clientes em euros")
-    sns.stripplot(x = 'age_agroupment', y = 'balance',data = Bank_Data)
+    plt.rc('axes', **new_style)
+    sns.set_style(rc=custom_style)
+    plt.title("Faixa de saldo por ano em relação à idade dos clientes em euros")
+    sns.stripplot(x = 'age_agroupment', y = 'balance',data = Bank_Data, palette = "flare", alpha = 0.75)
     plt.xlabel("Idade dos clientes")
     plt.ylabel("Faixa de saldo")
     plt.show(block = True)
@@ -18,7 +25,7 @@ def AgeWithDuration(Bank_Data):
     Bank_Data = Bank_Data.sort_values('duration',ascending = False)
     plt.figure(figsize = (13,8))
     plt.style.use("ggplot")
-    plt.title("Tempo médio de duração de uma chamada de marketing por faixa etária (Segundos)")
+    plt.title("Tempo médio de duração de uma ligação de marketing por faixa etária (Segundos)")
     sns.lineplot(x = 'age', y = 'duration', data = Bank_Data,alpha = 0.75)
     plt.xlabel('Idade')
     plt.ylabel('Tempo médio de duração')
@@ -41,8 +48,8 @@ def ClientsQuantityAge(Bank_Data):
 def AgeMarital(Bank_Data):
     plt.figure(figsize = (13,7))
     plt.style.use("ggplot")
-    plt.title("Idade dos clientes que estão casadas solteiras ou divorciadas")
-    sns.boxplot(x = 'marital', y = 'age', data = Bank_Data)
+    plt.title("Estado civil dos clientes da instituição financeira")
+    sns.stripplot(x = 'marital', y = 'age', data = Bank_Data)
     plt.xlabel("Estado civil")
     plt.ylabel("Idade")
     plt.show(block = True)
@@ -51,6 +58,8 @@ def JobsQuanity(Bank_Data):
     JobValues = pd.value_counts(Bank_Data["job"])
     JobDF = pd.DataFrame({"quantity": JobValues})
     JobDF = JobDF.reset_index()
+
+    print(JobDF.sort_values('quantity',ascending= False))
 
     plt.figure(figsize=(15,6))
     plt.style.use("ggplot")
@@ -78,11 +87,12 @@ def AgeWithLoan(Bank_Data):
     AgeLoanDF = pd.DataFrame({"Age     Loan": tempArray})
 
     plt.figure(figsize = (15,6))
-    plt.title("O volume das idades que contem algum emprestimo")
+    plt.title("O volume das idades que têm algum emprestimo")
     plt.style.use("ggplot")
     sns.countplot(y = 'Age     Loan',data = AgeLoanDF)
     plt.xlabel("Quantidades de clientes")
     plt.ylabel("Grupos das idades dos clientes")
+    print(AgeLoanDF.value_counts())
     plt.show(block = True)
 
 def AgeWithHousing(Bank_Data):
@@ -95,7 +105,7 @@ def AgeWithHousing(Bank_Data):
 
     plt.figure(figsize=(15, 6))
     plt.style.use("ggplot")
-    plt.title("O volume das idades que contem o financiamento de uma casa")
+    plt.title("O volume das idades que têm financiamento de uma casa")
     sns.countplot(y = 'Age Housing',data = AgeHousingDF)
     plt.xlabel("Quantidade de clientes")
     plt.ylabel("Grupos das idades dos clientes")
@@ -122,7 +132,7 @@ def AgeWithDefault(Bank_Data):
 def ContactWithDuration(Bank_Data):
     plt.figure(figsize = (15,6))
     plt.style.use("ggplot")
-    plt.title("Tipo de contato que os clientes mais utilizam")
+    plt.title("Meio de contato que os clientes ficam conversando por mais tempo")
     sns.stripplot(x = 'contact', y = 'duration', data = Bank_Data)
     plt.xlabel('Tipo de contato')
     plt.ylabel('Duração do contato')
@@ -138,9 +148,10 @@ def ContactWithAge(Bank_Data):
 
     plt.figure(figsize=(15, 6))
     plt.style.use("ggplot")
-    plt.title("Idades que mais utilizam determinados tipos de contatos")
+    plt.title("Idades que mais utilizam determinados meios de contatos")
     sns.countplot(y='Age Contact', data=AgeContactDF)
     plt.ylabel('Groupo Etário / Tipo de contato')
+    plt.xlabel('Quantidade de pessoas')
     plt.show(block = True)
 
 def StatusCampaigns(Bank_Data):
@@ -163,7 +174,6 @@ def StatusCampaigns(Bank_Data):
 
 file_path = "./Dataset/Bank_Data.xlsx"
 Bank_Data = pd.read_excel(file_path)
-
 
 #AgeWithBalance(Bank_Data)
 #AgeWithDuration(Bank_Data)

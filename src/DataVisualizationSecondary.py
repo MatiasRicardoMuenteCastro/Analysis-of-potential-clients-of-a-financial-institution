@@ -61,6 +61,7 @@ def BalanceWithRetired(Bank_Data):
     plt.xlabel("Faixa de saldo")
     plt.ylabel("Quantidade de clientes")
     RetiredCount = RetiredDF.value_counts()
+    print(RetiredCount)
     plt.show(block = True)
 
 def BalanceWithManagement(Bank_Data):
@@ -82,7 +83,6 @@ def BalanceWithManagement(Bank_Data):
     groupSeries = (pd.Series(groupString))
     groupSeries = groupSeries.drop_duplicates().reset_index(drop = True)
     ManagementDF['balance_agroupment'] = groupSeries
-
     plt.figure(figsize=(20, 6))
     plt.style.use("ggplot")
     plt.title("Saldo dos clientes que são gerentes (euros)")
@@ -90,6 +90,7 @@ def BalanceWithManagement(Bank_Data):
     plt.xlabel("Faixa de saldo")
     plt.ylabel("Quantidade de clientes")
     ManagmentCount = ManagementDF.value_counts()
+    print(ManagmentCount)
     plt.show(block = True)
 
 
@@ -102,6 +103,7 @@ def BalanceWithTechnician(Bank_Data):
     plt.xlabel("Faixa de saldo")
     plt.ylabel("Quantidade de clientes")
     TechnicianCount = technician.value_counts()
+    print(TechnicianCount)
     plt.show(block=True)
 
 def BalanceWithAdmin(Bank_Data):
@@ -113,15 +115,31 @@ def BalanceWithAdmin(Bank_Data):
     plt.xlabel("Faixa de saldo")
     plt.ylabel("Quantidade de clientes")
     AdminsCount = admins.value_counts()
+    print(AdminsCount)
+    plt.show(block=True)
+
+def BalanceWithServices(Bank_Data):
+    services = OrganizeAscending(Bank_Data, 'services')
+    plt.figure(figsize=(18, 6))
+    plt.style.use("ggplot")
+    plt.title("Saldo dos clientes que trabalham na prestação de serviços (euros)")
+    sns.barplot(x='balance_agroupment', y='quantity', data=services,alpha = 0.75)
+    plt.xlabel("Faixa de saldo")
+    plt.ylabel("Quantidade de clientes")
+    ServicesCount = services.value_counts()
+    print(ServicesCount)
     plt.show(block=True)
 
 file_path = "./Dataset/Bank_Data.xlsx"
 Bank_Data = pd.read_excel(file_path)
 
+#Grupo do saldo alto
 #BalanceWithBlueCollar(Bank_Data)
-#BalanceWithRetired(Bank_Data)
 #BalanceWithManagement(Bank_Data)
 #BalanceWithTechnician(Bank_Data)
+#Grupo do saldo alto/médio
+#BalanceWithRetired(Bank_Data)
 #BalanceWithAdmin(Bank_Data)
+#BalanceWithServices(Bank_Data)
 
 #Enviar o value counts de cada tabela, para dar uma noção maior sobre os valoresdo gráfico
