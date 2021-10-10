@@ -1,6 +1,8 @@
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import matplotlib as mpl
+import io
 
 #Plota o gráfico dos saldos de cada faixa etária
 def AgeWithBalance(Bank_Data):
@@ -10,6 +12,7 @@ def AgeWithBalance(Bank_Data):
     new_style = {'grid': False}
 
     Bank_Data = Bank_Data.sort_values('age')
+    mpl.use("Agg")
     plt.figure(figsize = (13,8))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
@@ -18,7 +21,10 @@ def AgeWithBalance(Bank_Data):
     sns.stripplot(x = 'age_agroupment', y = 'balance',data = Bank_Data, palette = "flare", alpha = 0.75)
     plt.xlabel("Idade dos clientes")
     plt.ylabel("Faixa de saldo")
-    plt.show(block = True)
+    bytes_image = io.BytesIO()
+    plt.savefig(bytes_image, format='png')
+    bytes_image.seek(0)
+    return bytes_image
 
 #Plota o gráfico da duração de chamada por idade
 def AgeWithDuration(Bank_Data):
@@ -28,6 +34,7 @@ def AgeWithDuration(Bank_Data):
     new_style = {'grid': False}
 
     Bank_Data = Bank_Data.sort_values('duration',ascending = False)
+    mpl.use("Agg")
     plt.figure(figsize = (13,8))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
@@ -36,7 +43,10 @@ def AgeWithDuration(Bank_Data):
     sns.lineplot(x = 'age', y = 'duration', data = Bank_Data,alpha = 0.75)
     plt.xlabel('Idade')
     plt.ylabel('Tempo médio de duração')
-    plt.show(block = True)
+    bytes_image = io.BytesIO()
+    plt.savefig(bytes_image, format='png')
+    bytes_image.seek(0)
+    return bytes_image
 
 def ClientsQuantityAge(Bank_Data):
     custom_style = {'axes.labelcolor': 'black',
@@ -48,7 +58,8 @@ def ClientsQuantityAge(Bank_Data):
     AgesDF = pd.DataFrame({"age": AgesCount.index,"quantity" : AgesCount['age']})
     AgesDF = AgesDF.reset_index(drop = True)
 
-    figure = plt.figure(figsize=(18,6))
+    mpl.use("Agg")
+    figure = plt.figure(figsize=(18,10))
     figure.set_size_inches(30, 6)
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
@@ -57,7 +68,11 @@ def ClientsQuantityAge(Bank_Data):
     sns.barplot(x = 'age',y = 'quantity', data = AgesDF, palette = "magma", alpha = 0.75)
     plt.ylabel("Número de clientes")
     plt.xlabel("Idades")
-    plt.show(block = True)
+    bytes_image = io.BytesIO()
+    plt.savefig(bytes_image, format='png')
+    bytes_image.seek(0)
+    return bytes_image
+
 
 def AgeMarital(Bank_Data):
     custom_style = {'axes.labelcolor': 'black',
@@ -65,6 +80,7 @@ def AgeMarital(Bank_Data):
                     'ytick.color': '#3b157e'}
     new_style = {'grid': False}
 
+    mpl.use("Agg")
     plt.figure(figsize = (13,7))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
@@ -73,7 +89,10 @@ def AgeMarital(Bank_Data):
     sns.stripplot(x = 'marital', y = 'age', data = Bank_Data,alpha = 0.75,palette = "flare")
     plt.xlabel("Estado civil")
     plt.ylabel("Idade")
-    plt.show(block = True)
+    bytes_image = io.BytesIO()
+    plt.savefig(bytes_image, format='png')
+    bytes_image.seek(0)
+    return bytes_image
 
 def JobsQuanity(Bank_Data):
     custom_style = {'axes.labelcolor': 'black',
@@ -85,8 +104,7 @@ def JobsQuanity(Bank_Data):
     JobDF = pd.DataFrame({"quantity": JobValues})
     JobDF = JobDF.reset_index()
 
-    print(JobDF.sort_values('quantity',ascending= False))
-
+    mpl.use("Agg")
     plt.figure(figsize=(15,6))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
@@ -95,7 +113,10 @@ def JobsQuanity(Bank_Data):
     sns.barplot(x = 'index', y = 'quantity', data = JobDF,alpha = 0.75, palette = "magma")
     plt.xlabel("Empregos")
     plt.ylabel("Quantidade de clientes")
-    plt.show(block = True)
+    bytes_image = io.BytesIO()
+    plt.savefig(bytes_image, format='png')
+    bytes_image.seek(0)
+    return bytes_image
 
 def BalanceWithJob(Bank_Data):
     custom_style = {'axes.labelcolor': 'black',
@@ -103,6 +124,7 @@ def BalanceWithJob(Bank_Data):
                     'ytick.color': '#3b157e'}
     new_style = {'grid': False}
 
+    mpl.use("Agg")
     plt.figure(figsize=(15, 6))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
@@ -111,7 +133,10 @@ def BalanceWithJob(Bank_Data):
     sns.stripplot(x = 'job', y = 'balance',data = Bank_Data, alpha = 0.75, palette = "flare")
     plt.xlabel("Empregos")
     plt.ylabel("Saldo médio")
-    plt.show(block = True)
+    bytes_image = io.BytesIO()
+    plt.savefig(bytes_image, format='png')
+    bytes_image.seek(0)
+    return bytes_image
 
 def AgeWithLoan(Bank_Data):
     Bank_Data = Bank_Data.sort_values('age')
@@ -121,14 +146,17 @@ def AgeWithLoan(Bank_Data):
 
     AgeLoanDF = pd.DataFrame({"Age     Loan": tempArray})
 
+    mpl.use("Agg")
     plt.figure(figsize = (15,6))
     plt.title("O volume das idades que têm algum emprestimo")
     plt.style.use("ggplot")
     sns.countplot(y = 'Age     Loan',data = AgeLoanDF, palette = "magma", alpha = 0.75)
     plt.xlabel("Quantidades de clientes")
     plt.ylabel("Grupos das idades dos clientes")
-    print(AgeLoanDF.value_counts())
-    plt.show(block = True)
+    bytes_image = io.BytesIO()
+    plt.savefig(bytes_image, format='png')
+    bytes_image.seek(0)
+    return bytes_image
 
 def AgeWithHousing(Bank_Data):
     custom_style = {'axes.labelcolor': 'black',
@@ -142,6 +170,7 @@ def AgeWithHousing(Bank_Data):
 
     AgeHousingDF = pd.DataFrame({"Age Housing": tempArray})
 
+    mpl.use("Agg")
     plt.figure(figsize=(15, 6))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
@@ -150,8 +179,10 @@ def AgeWithHousing(Bank_Data):
     sns.countplot(y = 'Age Housing',data = AgeHousingDF, palette = "magma", alpha = 0.75)
     plt.xlabel("Quantidade de clientes")
     plt.ylabel("Grupos das idades dos clientes")
-    print(AgeHousingDF.value_counts())
-    plt.show(block=True)
+    bytes_image = io.BytesIO()
+    plt.savefig(bytes_image, format='png')
+    bytes_image.seek(0)
+    return bytes_image
 
 def AgeWithDefault(Bank_Data):
     custom_style = {'axes.labelcolor': 'black',
@@ -165,6 +196,7 @@ def AgeWithDefault(Bank_Data):
 
     AgeDefaultDF = pd.DataFrame({"Age Default": tempArray})
 
+    mpl.use("Agg")
     plt.figure(figsize=(15, 6))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
@@ -173,8 +205,10 @@ def AgeWithDefault(Bank_Data):
     sns.countplot(y = 'Age Default',data = AgeDefaultDF, alpha = 0.75, palette = "magma")
     plt.xlabel("Quantidade de clientes")
     plt.ylabel("Grupos das idades dos clientes")
-    print(AgeDefaultDF.value_counts())
-    plt.show(block=True)
+    bytes_image = io.BytesIO()
+    plt.savefig(bytes_image, format='png')
+    bytes_image.seek(0)
+    return bytes_image
 
 def ContactWithDuration(Bank_Data):
     custom_style = {'axes.labelcolor': 'black',
@@ -182,6 +216,7 @@ def ContactWithDuration(Bank_Data):
                     'ytick.color': '#3b157e'}
     new_style = {'grid': False}
 
+    mpl.use("Agg")
     plt.figure(figsize = (15,6))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
@@ -190,7 +225,10 @@ def ContactWithDuration(Bank_Data):
     sns.stripplot(x = 'contact', y = 'duration', data = Bank_Data, alpha = 0.75, palette = "flare")
     plt.xlabel('Tipo de contato')
     plt.ylabel('Duração do contato')
-    plt.show(block = True)
+    bytes_image = io.BytesIO()
+    plt.savefig(bytes_image, format='png')
+    bytes_image.seek(0)
+    return bytes_image
 
 def ContactWithAge(Bank_Data):
     custom_style = {'axes.labelcolor': 'black',
@@ -204,6 +242,7 @@ def ContactWithAge(Bank_Data):
 
     AgeContactDF = pd.DataFrame({"Age Contact": tempArray})
 
+    mpl.use("Agg")
     plt.figure(figsize=(15, 6))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
@@ -212,9 +251,12 @@ def ContactWithAge(Bank_Data):
     sns.countplot(y='Age Contact', data=AgeContactDF, palette = "magma", alpha = 0.75)
     plt.ylabel('Groupo Etário / Tipo de contato')
     plt.xlabel('Quantidade de pessoas')
-    plt.show(block = True)
+    bytes_image = io.BytesIO()
+    plt.savefig(bytes_image, format='png')
+    bytes_image.seek(0)
+    return bytes_image
 
-def StatusCampaigns(Bank_Data):
+def StatusCampaign(Bank_Data):
     custom_style = {'axes.labelcolor': 'black',
                     'xtick.color': 'black',
                     'ytick.color': '#3b157e'}
@@ -228,6 +270,7 @@ def StatusCampaigns(Bank_Data):
 
     StatusDF = pd.DataFrame({'Status':TempArray})
 
+    mpl.use("Agg")
     plt.figure(figsize=(10, 6))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
@@ -236,10 +279,13 @@ def StatusCampaigns(Bank_Data):
     sns.countplot(x = 'Status',data = StatusDF, alpha = 0.75, palette = "magma")
     plt.xlabel('Status da campanha')
     plt.ylabel('Quantidades de falha ou sucesso')
-    plt.show(block=True)
+    bytes_image = io.BytesIO()
+    plt.savefig(bytes_image, format='png')
+    bytes_image.seek(0)
+    return bytes_image
 
-file_path = "./Dataset/Bank_Data.xlsx"
-Bank_Data = pd.read_excel(file_path)
+#file_path = "../../Dataset/Bank_Data.xlsx"
+#Bank_Data = pd.read_excel(file_path)
 
 #AgeWithBalance(Bank_Data)
 #AgeWithDuration(Bank_Data)
@@ -247,7 +293,7 @@ Bank_Data = pd.read_excel(file_path)
 #AgeMarital(Bank_Data)
 #JobsQuanity(Bank_Data)
 #BalanceWithJob(Bank_Data)
-AgeWithLoan(Bank_Data)
+#AgeWithLoan(Bank_Data)
 #AgeWithHousing(Bank_Data)
 #AgeWithDefault(Bank_Data)
 #ContactWithDuration(Bank_Data)

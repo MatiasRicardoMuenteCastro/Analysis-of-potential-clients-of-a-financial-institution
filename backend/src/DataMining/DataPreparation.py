@@ -124,7 +124,7 @@ def find_quantile_outlier(column):
 
     return count,outliers
 
-Bank_Filepath = "./Dataset/train.xlsx"
+Bank_Filepath = "../../Dataset/train.xlsx"
 #Para executar a função read_excel instalar os pacotes xlrd e openpyxl
 Bank_Data = pd.read_excel(Bank_Filepath)
 
@@ -169,4 +169,4 @@ for columns in list(Bank_Data.columns):
 
 Bank_Data = Bank_Data.dropna().reset_index(drop = True)
 
-Bank_Data.to_excel('./Dataset/Bank_Data.xlsx',index = False)
+Bank_Data.to_excel('../../../Dataset/Bank_Data.xlsx',index = False)

@@ -1,6 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import io
+import matplotlib as mpl
 
 def OrganizeAscending(Bank_Data,job):
     line = 0
@@ -47,6 +49,7 @@ def BalanceWithBlueCollar(Bank_Data):
                     'ytick.color': '#3b157e'}
     new_style = {'grid': False}
     BlueCollarDF = OrganizeAscending(Bank_Data,'blue-collar')
+    mpl.use("Agg")
     plt.figure(figsize=(15, 6))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
@@ -55,8 +58,10 @@ def BalanceWithBlueCollar(Bank_Data):
     sns.barplot(x='balance_agroupment', y='quantity', data=BlueCollarDF, alpha = 0.75, palette = "magma")
     plt.xlabel("Faixa de saldo")
     plt.ylabel("Quantidade de clientes")
-    BlueCollarCount = BlueCollarDF.value_counts()
-    plt.show(block=True)
+    bytes_image = io.BytesIO()
+    plt.savefig(bytes_image, format='png')
+    bytes_image.seek(0)
+    return bytes_image
 
 def BalanceWithRetired(Bank_Data):
     custom_style = {'axes.labelcolor': 'black',
@@ -64,6 +69,7 @@ def BalanceWithRetired(Bank_Data):
                     'ytick.color': '#3b157e'}
     new_style = {'grid': False}
     RetiredDF = OrganizeAscending(Bank_Data, 'retired')
+    mpl.use("Agg")
     plt.figure(figsize=(17, 6))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
@@ -72,9 +78,10 @@ def BalanceWithRetired(Bank_Data):
     sns.barplot(x='balance_agroupment', y='quantity', data=RetiredDF, alpha = 0.75, palette = "magma")
     plt.xlabel("Faixa de saldo")
     plt.ylabel("Quantidade de clientes")
-    RetiredCount = RetiredDF.value_counts()
-    print(RetiredCount)
-    plt.show(block = True)
+    bytes_image = io.BytesIO()
+    plt.savefig(bytes_image, format='png')
+    bytes_image.seek(0)
+    return bytes_image
 
 def BalanceWithManagement(Bank_Data):
     custom_style = {'axes.labelcolor': 'black',
@@ -99,6 +106,7 @@ def BalanceWithManagement(Bank_Data):
     groupSeries = (pd.Series(groupString))
     groupSeries = groupSeries.drop_duplicates().reset_index(drop = True)
     ManagementDF['balance_agroupment'] = groupSeries
+    mpl.use("Agg")
     plt.figure(figsize=(20, 6))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
@@ -107,9 +115,10 @@ def BalanceWithManagement(Bank_Data):
     sns.barplot(x='balance_agroupment', y='quantity', data=ManagementDF, alpha = 0.75, palette = "magma")
     plt.xlabel("Faixa de saldo")
     plt.ylabel("Quantidade de clientes")
-    ManagmentCount = ManagementDF.value_counts()
-    print(ManagmentCount)
-    plt.show(block = True)
+    bytes_image = io.BytesIO()
+    plt.savefig(bytes_image, format='png')
+    bytes_image.seek(0)
+    return bytes_image
 
 
 def BalanceWithTechnician(Bank_Data):
@@ -118,6 +127,7 @@ def BalanceWithTechnician(Bank_Data):
                     'ytick.color': '#3b157e'}
     new_style = {'grid': False}
     technician = OrganizeAscending(Bank_Data, 'technician')
+    mpl.use("Agg")
     plt.figure(figsize=(18, 6))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
@@ -126,9 +136,10 @@ def BalanceWithTechnician(Bank_Data):
     sns.barplot(x='balance_agroupment', y='quantity', data=technician, alpha = 0.75, palette = "magma")
     plt.xlabel("Faixa de saldo")
     plt.ylabel("Quantidade de clientes")
-    TechnicianCount = technician.value_counts()
-    print(TechnicianCount)
-    plt.show(block=True)
+    bytes_image = io.BytesIO()
+    plt.savefig(bytes_image, format='png')
+    bytes_image.seek(0)
+    return bytes_image
 
 def BalanceWithAdmin(Bank_Data):
     custom_style = {'axes.labelcolor': 'black',
@@ -136,6 +147,7 @@ def BalanceWithAdmin(Bank_Data):
                     'ytick.color': '#3b157e'}
     new_style = {'grid': False}
     admins = OrganizeAscending(Bank_Data, 'admin.')
+    mpl.use("Agg")
     plt.figure(figsize=(18, 6))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
@@ -144,9 +156,10 @@ def BalanceWithAdmin(Bank_Data):
     sns.barplot(x='balance_agroupment', y='quantity', data=admins,alpha = 0.75,palette = "magma")
     plt.xlabel("Faixa de saldo")
     plt.ylabel("Quantidade de clientes")
-    AdminsCount = admins.value_counts()
-    print(AdminsCount)
-    plt.show(block=True)
+    bytes_image = io.BytesIO()
+    plt.savefig(bytes_image, format='png')
+    bytes_image.seek(0)
+    return bytes_image
 
 def BalanceWithServices(Bank_Data):
     custom_style = {'axes.labelcolor': 'black',
@@ -154,6 +167,7 @@ def BalanceWithServices(Bank_Data):
                     'ytick.color': '#3b157e'}
     new_style = {'grid': False}
     services = OrganizeAscending(Bank_Data, 'services')
+    mpl.use("Agg")
     plt.figure(figsize=(18, 6))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
@@ -162,12 +176,13 @@ def BalanceWithServices(Bank_Data):
     sns.barplot(x='balance_agroupment', y='quantity', data=services,alpha = 0.75, palette = "magma")
     plt.xlabel("Faixa de saldo")
     plt.ylabel("Quantidade de clientes")
-    ServicesCount = services.value_counts()
-    print(ServicesCount)
-    plt.show(block=True)
+    bytes_image = io.BytesIO()
+    plt.savefig(bytes_image, format='png')
+    bytes_image.seek(0)
+    return bytes_image
 
-file_path = "./Dataset/Bank_Data.xlsx"
-Bank_Data = pd.read_excel(file_path)
+#file_path = "../../Dataset/Bank_Data.xlsx"
+#Bank_Data = pd.read_excel(file_path)
 
 #Grupo do saldo alto
 #BalanceWithBlueCollar(Bank_Data)
