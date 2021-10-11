@@ -1,30 +1,42 @@
 from backend.src.DataMining import DataVisualization
+from backend.src.PyAuth.authenticate import token_required
 from flask import Blueprint
 import pandas as pd
 import json
 import base64
+import os
 
 bp = Blueprint("DataVisualization",__name__)
 
+@bp.before_request
+@token_required
+
 @bp.route('/AgeWithBalance')
 def AgeWithBalanceRoute():
-    try:
-        file_path = "../Dataset/Bank_Data.xlsx"
+    Upload_Folder = os.path.join(os.getcwd(), 'Dataset')
+    ListDirMined = os.listdir(os.path.join(Upload_Folder, 'Mined'))
+
+    if len(ListDirMined) > 0:
+        file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
-    except:
-        return json.dumps({'error':'Por favor faça o upload de um Dataset'}), 412
+    else:
+        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
 
     figure = DataVisualization.AgeWithBalance(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
     return json.dumps({'image':plot_url})
 
+
 @bp.route('/AgeWithDuration')
 def AgeWithDurationRoute():
-    try:
-        file_path = "../Dataset/Bank_Data.xlsx"
+    Upload_Folder = os.path.join(os.getcwd(), 'Dataset')
+    ListDirMined = os.listdir(os.path.join(Upload_Folder, 'Mined'))
+
+    if len(ListDirMined) > 0:
+        file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
-    except:
-        return json.dumps({'error':'Por favor faça o upload de um Dataset'}), 412
+    else:
+        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
 
     figure = DataVisualization.AgeWithDuration(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -32,11 +44,14 @@ def AgeWithDurationRoute():
 
 @bp.route('/ClientsQuantityAge')
 def ClientsQuantityRoute():
-    try:
-        file_path = "../Dataset/Bank_Data.xlsx"
+    Upload_Folder = os.path.join(os.getcwd(), 'Dataset')
+    ListDirMined = os.listdir(os.path.join(Upload_Folder, 'Mined'))
+
+    if len(ListDirMined) > 0:
+        file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
-    except:
-        return json.dumps({'error': 'Por favor faça o upload de um Dataset'}), 412
+    else:
+        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
 
     figure = DataVisualization.ClientsQuantityAge(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -44,11 +59,14 @@ def ClientsQuantityRoute():
 
 @bp.route('/AgeMarital')
 def AgeMaritalRoute():
-    try:
-        file_path = "../Dataset/Bank_Data.xlsx"
+    Upload_Folder = os.path.join(os.getcwd(), 'Dataset')
+    ListDirMined = os.listdir(os.path.join(Upload_Folder, 'Mined'))
+
+    if len(ListDirMined) > 0:
+        file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
-    except:
-        return json.dumps({'error': 'Por favor faça o upload de um Dataset'}), 412
+    else:
+        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
 
     figure = DataVisualization.AgeMarital(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -56,11 +74,14 @@ def AgeMaritalRoute():
 
 @bp.route('/JobsQuantity')
 def JobsQuantityRoute():
-    try:
-        file_path = "../Dataset/Bank_Data.xlsx"
+    Upload_Folder = os.path.join(os.getcwd(), 'Dataset')
+    ListDirMined = os.listdir(os.path.join(Upload_Folder, 'Mined'))
+
+    if len(ListDirMined) > 0:
+        file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
-    except:
-        return json.dumps({'error': 'Por favor faça o upload de um Dataset'}), 412
+    else:
+        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
 
     figure = DataVisualization.JobsQuanity(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -68,11 +89,14 @@ def JobsQuantityRoute():
 
 @bp.route('/BalanceWithJob')
 def BalanceWithJobRoute():
-    try:
-        file_path = "../Dataset/Bank_Data.xlsx"
+    Upload_Folder = os.path.join(os.getcwd(), 'Dataset')
+    ListDirMined = os.listdir(os.path.join(Upload_Folder, 'Mined'))
+
+    if len(ListDirMined) > 0:
+        file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
-    except:
-        return json.dumps({'error': 'Por favor faça o upload de um Dataset'}), 412
+    else:
+        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
 
     figure = DataVisualization.BalanceWithJob(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -80,11 +104,14 @@ def BalanceWithJobRoute():
 
 @bp.route('/AgeWithLoan')
 def AgeWithLoanRoute():
-    try:
-        file_path = "../Dataset/Bank_Data.xlsx"
+    Upload_Folder = os.path.join(os.getcwd(), 'Dataset')
+    ListDirMined = os.listdir(os.path.join(Upload_Folder, 'Mined'))
+
+    if len(ListDirMined) > 0:
+        file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
-    except:
-        return json.dumps({'error': 'Por favor faça o upload de um Dataset'}), 412
+    else:
+        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
 
     figure = DataVisualization.AgeWithLoan(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -92,11 +119,14 @@ def AgeWithLoanRoute():
 
 @bp.route('/AgeWithHousing')
 def AgeWithHousingRoute():
-    try:
-        file_path = "../Dataset/Bank_Data.xlsx"
+    Upload_Folder = os.path.join(os.getcwd(), 'Dataset')
+    ListDirMined = os.listdir(os.path.join(Upload_Folder, 'Mined'))
+
+    if len(ListDirMined) > 0:
+        file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
-    except:
-        return json.dumps({'error': 'Por favor faça o upload de um Dataset'}), 412
+    else:
+        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
 
     figure = DataVisualization.AgeWithHousing(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -104,11 +134,14 @@ def AgeWithHousingRoute():
 
 @bp.route('/AgeWithDefault')
 def AgeWithDefaultRoute():
-    try:
-        file_path = "../Dataset/Bank_Data.xlsx"
+    Upload_Folder = os.path.join(os.getcwd(), 'Dataset')
+    ListDirMined = os.listdir(os.path.join(Upload_Folder, 'Mined'))
+
+    if len(ListDirMined) > 0:
+        file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
-    except:
-        return json.dumps({'error': 'Por favor faça o upload de um Dataset'}), 412
+    else:
+        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
 
     figure = DataVisualization.AgeWithDefault(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -116,11 +149,14 @@ def AgeWithDefaultRoute():
 
 @bp.route('/ContactWithDuration')
 def ContactWithDurationRoute():
-    try:
-        file_path = "../Dataset/Bank_Data.xlsx"
+    Upload_Folder = os.path.join(os.getcwd(), 'Dataset')
+    ListDirMined = os.listdir(os.path.join(Upload_Folder, 'Mined'))
+
+    if len(ListDirMined) > 0:
+        file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
-    except:
-        return json.dumps({'error': 'Por favor faça o upload de um Dataset'}), 412
+    else:
+        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
 
     figure = DataVisualization.ContactWithDuration(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -128,11 +164,14 @@ def ContactWithDurationRoute():
 
 @bp.route('/ContactWithAge')
 def ContactWithAgeRoute():
-    try:
-        file_path = "../Dataset/Bank_Data.xlsx"
+    Upload_Folder = os.path.join(os.getcwd(), 'Dataset')
+    ListDirMined = os.listdir(os.path.join(Upload_Folder, 'Mined'))
+
+    if len(ListDirMined) > 0:
+        file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
-    except:
-        return json.dumps({'error': 'Por favor faça o upload de um Dataset'}), 412
+    else:
+        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
 
     figure = DataVisualization.ContactWithAge(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -140,11 +179,14 @@ def ContactWithAgeRoute():
 
 @bp.route('/StatusCampaign')
 def StatusCampaignRoute():
-    try:
-        file_path = "../Dataset/Bank_Data.xlsx"
+    Upload_Folder = os.path.join(os.getcwd(), 'Dataset')
+    ListDirMined = os.listdir(os.path.join(Upload_Folder, 'Mined'))
+
+    if len(ListDirMined) > 0:
+        file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
-    except:
-        return json.dumps({'error': 'Por favor faça o upload de um Dataset'}), 412
+    else:
+        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
 
     figure = DataVisualization.StatusCampaign(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
