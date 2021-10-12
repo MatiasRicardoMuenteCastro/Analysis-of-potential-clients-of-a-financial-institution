@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    overflow: hidden;
+}
+
+h1{
+    display: inline-block;
+    height: 45px;
+    position: fixed;
+    top: 220px;
+    left: 10%;
+    color: white;
+    text-shadow: px 2px 2px black;
+}
+
+body{
+    background: linear-gradient(120deg, #740cc9, #010849);
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    min-width: 100vh;
+    display: flex;
+    position: relative;
+    margin-top: 280px;
+    margin-left: 120px;
+}
+#MainText{
+    font-size: 20px;
+    overflow: visible;
+    width: 800px;
+    height: 150px;
+    position: relative;
+    left: 5%;
+    top: 120px;
+    color: rgb(206, 206, 206);
+}
+
+
+#LoginBox:hover{
+    background-color: rgba(45, 45, 85, 0.596);
+    box-shadow: 10px 10px 5px rgba(42, 42, 80, 0.596);
+    transition: all 0.5s linear;
+}
+
+#LoginBox{
+    background-color: rgba(46, 15, 97, 0.808);
+    box-shadow: 10px 10px 5px rgba(33, 13, 65, 0.801);
+    height: 400px;
+    width: 35%;
+    border-radius: 50px;
+    text-align: center;
+}
+
+#IdUser{
+    margin-top: 140px;
+}
+
+#IdPass{
+    margin-top: 40px;
+}
+
+#IdUser:focus,#IdPass:focus{
+    outline: none
+}
+
+#IdUser:hover,#IdPass:hover{
+    height: 40px;
+}
+
+#IdUser,#IdPass{
+    font-size: 20px;
+    padding-left: 10px;
+    height: 40px;
+    width: 250px;
+    border-radius: 20px;
+    border: 0px;
+    background-color: rgb(226, 226, 226);
+}
+
+#ButtonLogin:hover{
+    background-color: rgb(43, 26, 82);
+    transition: all 0.5s linear;
+    height: 45px;
+    width: 255px;
+    font-size: 22px
+}
+
+#ButtonLogin{
+    background-color: rgb(69, 49, 138);
+    margin-top: 30px;
+    height: 40px;
+    width: 250px;
+    border-radius: 20px;
+    border: 0px;
+    font-size: 18px;
+    color: rgb(224, 224, 224);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
