@@ -1,0 +1,68 @@
+body{
+    background-color: #2F1252;
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#back{
+    position: fixed;
+    background: url('../images/botao-home.png');
+    background-size: 60px;
+    background-repeat: no-repeat;
+    background-color: rgb(255, 255, 255);
+    background-position: center;
+    height: 70px;
+    width: 70px;
+    top: 20px;
+    left: 10px;
+    border-radius: 100%;
+    border: 0px;
+    color: white;
+}
+
+#back:hover{
+    background-color: rgba(255, 255, 255, 0.418);
+}
+
+#container{
+    color: white;
+    padding: 50px;
+    text-align: center;
+    background-color: rgba(82, 54, 122, 0.473);
+    border-radius: 100px;
+}
+
+.button{
+    border: 0px;
+    background-color: #2F1252;
+    color: white;
+    height: 35px;
+    width: 200px;
+    border-radius: 50px;
+}
+
+.button:hover{
+    background-color: rgba(0, 0, 0, 0.5)
+}
+
+#container .form label{
+    font-weight: bold;
+}
+
+#container .form input{
+    margin-bottom: 60px;
+}
+
+#container #ButtonMine{
+    margin-top: 20px;
+}
+
+#container p{
+    text-align: left;
+}
+
+

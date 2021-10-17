@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboards Principais</title>
+    <link href = "/styles/stylesDashboard.css" rel = "stylesheet">
+</head>
+<body>
+    <div class = "load" id = "load"></div>
+    <p id = "LoadLabel"></p>
+    <p id = "ErrorLabel"></p>
+    <button id = "Back" onclick = "back()"></button>
+    <button onclick="anterior()" id = "ButtonLast"></button>
+    <div class = "carrossel">
+        <p id = "GraphCount">Gráfico número: 1</p>
+        <div class = "container" id = "img">
+            <img id = "graph0" src = "">
+            <img id = "graph1" src = "">
+            <img id = "graph2" src = "">
+            <img id = "graph3" src = "">
+            <img id = "graph4" src = "">
+            <img id = "graph5" src = "">
+            <img id = "graph6" src = "">
+            <img id = "graph7" src = "">
+            <img id = "graph8" src = "">
+            <img id = "graph9" src = "">
+            <img id = "graph10" src = "">
+            <img id = "graph11" src = "">
+        </div>
+    </div>
+    <button onclick="next()" id = "ButtonNext"></button>
+    <script defer>
+        countError = 0;
+        nextCount = 0;
+        const header = new Headers();
+        header.append("TOKEN","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJUb2tlbiI6Ijc5M2Q3ODVhYzk4YTcwYTQwMTNhMjYxYzRiNzc4YzIwNmU1MTY3ZTFlZDUzNTllMjkxMWI5Y2UxODdhZmYzMmIiLCJleHAiOjE2MzQ0MTI5NzJ9.Mnb9SyB3_t7gJ9f-xUbCwcpW7rvLyX7LF1IkGCusI_Q")
+        
+
+        const imgs = document.getElementById("img");
+        const img = document.querySelectorAll("#img img");
+        
+        async function getImages(){
+            for(i = 0; i < img.length; i++){
+                try{
+                    routes = ["AgeWithBalance","AgeWithDuration","ClientsQuantityAge","AgeMarital","JobsQuantity","BalanceWithJob","AgeWithLoan","AgeWithHousing","ContactWithDuration","ContactWithAge","StatusCampaign","AgeWithDefault"]
+                    document.getElementById('load').style.visibility = "visible";
+                    document.getElementById("LoadLabel").innerHTML = `Carregando o gráfico número: ${i+1}`
+                    const response = await fetch(`http://localhost:5000/${routes[i]}`,{
+                        method: "GET",
+                        headers: header
+                    })
+                    const imageObj = await response.json()
+                    imageBytes = imageObj.image
+                    document.getElementById(`graph${i}`).src = "data:image/png;base64," +imageBytes;
+                }
+                    
+                catch(error){
+                    console.log(error)
+                    countError = countError+1
+                    document.getElementById("ErrorLabel").innerHTML = `Falha no carregamento do gráfico: ${i+1}`
+                }
+                document.getElementById('load').style.visibility = "hidden";
+                if(countError > 0){
+                    document.getElementById("LoadLabel").innerHTML = `Houve falhas no carregamento de ${countError} gráficos`
+                }
+                else{
+                    document.getElementById("LoadLabel").innerHTML = "Carregamento de gráficos compeltado com sucesso!"
+                }
+            }
+            document.getElementById('ErrorLabel').style.visibility = "hidden";
+        }
+        getImages()
+        let idx = 0;
+
+        function carrossel(){
+            idx++;
+            if(idx > img.length - 1){
+                idx = 0;
+            }
+            document.getElementById("GraphCount").innerHTML = `Gráfico número: ${idx+1}`
+            imgs.style.transform = `translateX(${-idx*100}%)`; // * 100% é a largura que foi setada
+        }
+        
+        function anterior(){
+            idx = idx-1;
+            if(idx < 0){
+                idx = 0;
+            }
+            document.getElementById("GraphCount").innerHTML = `Gráfico número: ${idx+1}`
+            imgs.style.transform = `translateX(${-idx*100}%)`;
+        }
+
+        function next(){
+            carrossel()
+        }
+
+        function last(){
+            anterior()
+        }
+
+        function back(){
+            window.open("main.html")
+            window.close()
+        }
+    </script>
+</body>
+</html>

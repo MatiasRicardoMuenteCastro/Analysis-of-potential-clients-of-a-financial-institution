@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload do seu dataset</title>
+</head>
+<link href = "/styles/stylesUpload.css" rel = "stylesheet">
+<style>
+</style>
+<body>
+    <button id = "back" onclick = "back()"></button>
+    <div id = "container">
+        <form class = "form" id = "myForm">
+            <label for="fileSend">Envie aqui o arquivo de Excel com extensão xlsx</label><br>
+            <input type = "file" name = "excel" id = "fileSend" placeholder="Coloque aqui seu arquivo..."><br>
+            <button class = "button" type = "submit"><i class = "far fa-paper-plane"></i>Enviar arquivo</button>
+        </form>
+        <button class = "button" id = "ButtonMine" onclick = "buttonMine()">Minerar dados</button>
+
+        <p id = "labelUpload">Status do upload: </p>
+        <p id = "status"></p>
+        <p id = "labelStatus">Status da mineração: (A mineração de dados pode demorar por volta de 20 segundos devido a ela ser bem pesada)</p>
+        <p id = "statusMine"></p>
+    </div>
+    <script>
+        const form = document.getElementById('myForm')
+        const inputFile = document.getElementById('fileSend')
+
+        form.addEventListener("submit", async e =>{
+            document.getElementById("status").innerHTML = ""
+            e.preventDefault()
+
+            const header = new Headers()
+            const formData = new FormData()
+            
+            formData.append("excel", fileSend.files[0])
+            header.append("TOKEN","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJUb2tlbiI6IjZhMGQ0YWU5MDVlOTgxNDEzYzczYjAzOTFjNmYxYTlkY2M4Y2NlN2RmMzRhZjZiZjE4NzZlM2JlYWZjODg2ODgiLCJleHAiOjE2MzQ0ODUyNzF9.moZMF1nT0dKAY9-_0RWvy0QGljGtSjaw4_B-XOP-z0g")
+
+            url = "http://localhost:5000/Upload"
+
+            const response = await fetch(url,{
+                method: "post",
+                headers: header,
+                body: formData
+            }).catch(console.error)
+
+            let result = await response.json()
+
+            if (result.sucess == "Upload feito com sucesso"){
+                document.getElementById("status").innerHTML = "Sucesso: "+result.sucess;
+                document.getElementsByTagName("style")[0].innerHTML += "#status{color: green; margin-top: -15px}"
+            }
+            else if (result.error != ""){
+                document.getElementById("status").innerHTML = "Erro: "+result.error;
+                document.getElementsByTagName("style")[0].innerHTML += "#status{color: red; margin-top: -15px}"
+            }
+        
+        })
+
+        async function buttonMine(){
+            document.getElementById("statusMine").innerHTML = ""
+            const header = new Headers()
+            header.append("TOKEN","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJUb2tlbiI6IjZhMGQ0YWU5MDVlOTgxNDEzYzczYjAzOTFjNmYxYTlkY2M4Y2NlN2RmMzRhZjZiZjE4NzZlM2JlYWZjODg2ODgiLCJleHAiOjE2MzQ0ODUyNzF9.moZMF1nT0dKAY9-_0RWvy0QGljGtSjaw4_B-XOP-z0g")
+            
+            const response = await fetch('http://localhost:5000/Data_Mining',{
+                method:"PUT",
+                headers:header
+            
+            }).catch(console.error)
+            let result = await response.json()
+
+            if (result.sucess == "A mineração de dados foi concluida"){
+                document.getElementById("statusMine").innerHTML = "Sucesso: "+result.sucess;
+                document.getElementsByTagName("style")[0].innerHTML += "#statusMine{color: green; margin-top: -15px}"
+            }
+            else if (result.error == "Por favor faça o upload de um dataset compátivel com o modelo de mineração"){
+                document.getElementById("statusMine").innerHTML = "Error: "+result.error;
+                document.getElementsByTagName("style")[0].innerHTML += "#statusMine{color: red; margin-top: -15px}"
+            }
+        }
+
+        function back(){
+            window.open("main.html")
+            window.close()
+        }
+    </script>
+</body>
+</html>

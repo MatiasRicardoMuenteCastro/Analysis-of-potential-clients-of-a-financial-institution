@@ -1,0 +1,60 @@
+  body{
+    margin: 0px;
+    background-color: #2F1252;
+ 
+  }
+  .menu{
+    width: 220px;
+    height: 940px;
+    border-right: 1px solid rgba(63, 56, 56, 0.582);
+  }
+
+  .menu:hover{
+    background-color: rgba(83, 83, 83, 0.247);
+    transition: all 0.5s linear;
+  }
+
+  .menu #NomeTxt,#MenuTxt{
+    color: rgb(240, 240, 240);
+    font-size: 20px;
+    margin-left: 20px;
+  }
+  #MenuTxt{
+    width: 100px;
+    margin-top: 70px;
+    font-size: 16px;
+    margin-left: 38px;
+    border-bottom: 1px solid white;
+  }
+
+.menu ul li{
+  list-style-type: none;
+}
+
+.menu ul li button{
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  height: 50px;
+  width: 195px;
+  text-align: center;
+  position: relative;
+  right: 53px;
+  border: 0px;
+  border-radius: 15px;
+  font-size: 15px;
+}
+
+.menu ul li button:hover{
+  background-color: rgba(70, 70, 70, 0.137);
+  font-size: 17px;
+  transition: all 0.5s linear;
+}
+
+.menu ul li button{
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.651);
+}
+
+.menu ul li #ButtonLogout{
+  margin-top: 550px;
+}

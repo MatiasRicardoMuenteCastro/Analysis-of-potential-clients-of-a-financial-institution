@@ -3,6 +3,8 @@ async function getLogin(){
     Password = document.querySelector("#IdPass").value;
 
     if (UserName == "admin" && Password == "root"){
+        window.open("html/main.html")
+        window.close()
         try{
             const response = await fetch('http://localhost:5000/Session',{method:"POST"})
             const token = await response.json()
@@ -15,4 +17,28 @@ async function getLogin(){
     else{
         alert("Usuário ou senha incorretos")
     }
+}
+
+function getClickMain(){
+    window.open("MainDashboard.html")
+    window.close()
+}
+
+function getClickSecundary(){
+    window.open("SecundaryDashboard.html")
+    window.close()
+}
+
+function getClickUpload(){
+    window.open("Upload.html")
+    window.close()
+}
+
+function getClickLogout(){
+    window.open("/index.html")
+    window.close()
+}
+
+function sendFile(){
+
 }
