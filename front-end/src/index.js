@@ -1,23 +1,29 @@
 async function getLogin(){
     UserName = document.querySelector("#IdUser").value;
-    Password = document.querySelector("#IdPass").value;
+    pass = document.querySelector("#IdPass").value;
 
-    if (UserName == "admin" && Password == "root"){
-        window.open("html/main.html")
-        window.close()
         try{
-            const response = await fetch('http://localhost:5000/Session',{method:"POST"})
-            const token = await response.json()
-            console.log(token.Token)
+            const response = await fetch('http://localhost:5000/session',{
+            method:"POST",
+            body:JSON.stringify({
+                user: UserName,
+                password: pass
+            })
+            })
+            const login = await response.json()
+            if (login.id != undefined && login.user != undefined){
+                window.open("/html/main.html")
+                window.close()
+            }
+            else{
+                document.getElementById("error").innerHTML = `Erro: ${login.error}`
+            }
         }
         catch(error){
-            console.log('Erro na geração do token')
+            console.log('Erro na autenticação da conta')
         }
     }
-    else{
-        alert("Usuário ou senha incorretos")
-    }
-}
+
 
 function getClickMain(){
     window.open("MainDashboard.html")
@@ -39,6 +45,7 @@ function getClickLogout(){
     window.close()
 }
 
-function sendFile(){
-
+function getClickLogout(){
+    window.open("AccountsManagment.html")
+    window.close()
 }

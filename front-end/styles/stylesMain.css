@@ -44,6 +44,10 @@
   font-size: 15px;
 }
 
+#ButtonAccounts{
+  margin-left: 8px;
+}
+
 .menu ul li button:hover{
   background-color: rgba(70, 70, 70, 0.137);
   font-size: 17px;

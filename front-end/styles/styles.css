@@ -56,6 +56,16 @@ body{
     text-align: center;
 }
 
+
+#error{
+    border-radius: 10px;
+    font-size: 18px;
+    color: rgba(255, 0, 0, 0.788);
+    position: absolute;
+    top: 25px;
+    left: 20px;
+}
+
 #IdUser{
     margin-top: 140px;
 }

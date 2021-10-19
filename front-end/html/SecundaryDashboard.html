@@ -5,8 +5,99 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboards Secundarios</title>
+    <link href = "/styles/stylesDashboardSecundary.css" rel = "stylesheet">
 </head>
 <body>
-    <h1>Secundary Dashboard</h1>
+    <div class = "load" id = "load"></div>
+    <p id = "LoadLabel"></p>
+    <p id = "ErrorLabel"></p>
+    <button id = "Back" onclick = "back()"></button>
+    <button onclick="anterior()" id = "ButtonLast"></button>
+    <div class = "carrossel">
+        <p id = "GraphCount">Gráfico número: 1</p>
+        <div class = "container" id = "img">
+            <img id = "graph0" src = "">
+            <img id = "graph1" src = "">
+            <img id = "graph2" src = "">
+            <img id = "graph3" src = "">
+            <img id = "graph4" src = "">
+            <img id = "graph5" src = "">
+        </div>
+    </div>
+    <button onclick="next()" id = "ButtonNext"></button>
+    <script defer>
+        countError = 0;
+        nextCount = 0;
+        const header = new Headers();
+        header.append("TOKEN","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJUb2tlbiI6IjZjMjNmOTdmZmY3Nzg4MWQyMjhiMDBmMmY4ODdlZjBhNzE2MTcyOGEyN2M3MzkzN2Q4NTA3OGViNjExNzhkMTciLCJleHAiOjE2MzQ1Mjg1MTF9.OoyE5u0Ef0VoZX7ZB7IrPoku9TQALlEco_8bUhoCmDY")
+        
+
+        const imgs = document.getElementById("img");
+        const img = document.querySelectorAll("#img img");
+        
+        async function getImages(){
+            for(i = 0; i < img.length; i++){
+                try{
+                    routes = ["BalanceWithBlueCollar","BalanceWithRetired","BalanceWithManagement","BalanceWithTechnician","BalanceWithAdmin","BalanceWithServices"]
+                    document.getElementById('load').style.visibility = "visible";
+                    document.getElementById("LoadLabel").innerHTML = `Carregando o gráfico número: ${i+1}`
+                    const response = await fetch(`http://localhost:5000/${routes[i]}`,{
+                        method: "GET",
+                        headers: header
+                    })
+                    const imageObj = await response.json()
+                    imageBytes = imageObj.image
+                    document.getElementById(`graph${i}`).src = "data:image/png;base64," +imageBytes;
+                }
+                    
+                catch(error){
+                    console.log(error)
+                    countError = countError+1
+                    document.getElementById("ErrorLabel").innerHTML = `Falha no carregamento do gráfico: ${i+1}`
+                }
+                document.getElementById('load').style.visibility = "hidden";
+                if(countError > 0){
+                    document.getElementById("LoadLabel").innerHTML = `Houve falhas no carregamento de ${countError} gráficos`
+                }
+                else{
+                    document.getElementById("LoadLabel").innerHTML = "Carregamento de gráficos compeltado com sucesso!"
+                }
+            }
+            document.getElementById('ErrorLabel').style.visibility = "hidden";
+        }
+        getImages()
+        let idx = 0;
+
+        function carrossel(){
+            idx++;
+            if(idx > img.length - 1){
+                idx = 0;
+            }
+            document.getElementById("GraphCount").innerHTML = `Gráfico número: ${idx+1}`
+            imgs.style.transform = `translateX(${-idx*100}%)`; // * 100% é a largura que foi setada
+        }
+        
+        function anterior(){
+            idx = idx-1;
+            if(idx < 0){
+                idx = 0;
+            }
+            document.getElementById("GraphCount").innerHTML = `Gráfico número: ${idx+1}`
+            imgs.style.transform = `translateX(${-idx*100}%)`;
+        }
+
+        function next(){
+            carrossel()
+        }
+
+        function last(){
+            anterior()
+        }
+
+        function back(){
+            window.open("main.html")
+            window.close()
+        }
+    </script>
 </body>
 </html>

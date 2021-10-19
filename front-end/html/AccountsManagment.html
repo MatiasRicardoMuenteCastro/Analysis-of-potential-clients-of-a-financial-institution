@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Contas</title>
+    <link href = "/styles/stylesAccounts.css" rel = "stylesheet">
+</head>
+<body>
+    <div id = "Panel">
+        <button id = "refresh" onclick = refreshTable()>Atualizar</button>
+        <table>
+            <caption>Lista de usuários com acesso a esta aplicação</caption>
+            <thead>
+                <tr>
+                    <th>ID do usuário</th>
+                    <th>Nome do usuário</th>
+                </tr>
+            </thead>
+            <tbody id = "tbody">
+            </tbody>
+        </table>
+    </div>
+    <script>
+        async function getUsers(){
+            try{
+            const response = await fetch(`http://localhost:5000/users`,{
+                method: "GET",
+                headers: header
+            })
+            const usuarios = await response.json()
+                ArrayUsers = usuarios.usuarios
+                for (users of ArrayUsers){
+                    document.getElementById("tbody").innerHTML += `<tr><td>${users[0]}</td> <td>${users[1]}</td> </tr>`
+                }
+            }
+            catch(error){
+                console.error(error)
+            }
+        }
+
+        const header = new Headers()
+        header.append("id","4iew9moc9v")
+        getUsers()
+        
+
+        async function refreshTable(){
+            document.getElementById("tbody").innerHTML = ""
+            getUsers()
+        }
+
+    </script>
+</body>
+</html>
