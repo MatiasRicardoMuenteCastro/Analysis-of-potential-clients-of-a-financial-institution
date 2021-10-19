@@ -59,8 +59,7 @@ def ClientsQuantityAge(Bank_Data):
     AgesDF = AgesDF.reset_index(drop = True)
 
     mpl.use("Agg")
-    figure = plt.figure(figsize=(18,10))
-    figure.set_size_inches(30, 6)
+    plt.figure(figsize = (21,11))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
     sns.set_style(rc=custom_style)
@@ -81,7 +80,7 @@ def AgeMarital(Bank_Data):
     new_style = {'grid': False}
 
     mpl.use("Agg")
-    plt.figure(figsize = (13,7))
+    plt.figure(figsize = (13,8))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
     sns.set_style(rc=custom_style)
@@ -105,7 +104,7 @@ def JobsQuanity(Bank_Data):
     JobDF = JobDF.reset_index()
 
     mpl.use("Agg")
-    plt.figure(figsize=(15,6))
+    plt.figure(figsize = (13,8))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
     sns.set_style(rc=custom_style)
@@ -125,7 +124,7 @@ def BalanceWithJob(Bank_Data):
     new_style = {'grid': False}
 
     mpl.use("Agg")
-    plt.figure(figsize=(15, 6))
+    plt.figure(figsize = (13,8))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
     sns.set_style(rc=custom_style)
@@ -147,8 +146,8 @@ def AgeWithLoan(Bank_Data):
     AgeLoanDF = pd.DataFrame({"Age     Loan": tempArray})
 
     mpl.use("Agg")
-    plt.figure(figsize = (15,6))
-    plt.title("O volume das idades que têm algum emprestimo")
+    plt.figure(figsize = (13,8))
+    plt.title("Saldo médio por ano de cada profissão em euros")
     plt.style.use("ggplot")
     sns.countplot(y = 'Age     Loan',data = AgeLoanDF, palette = "magma", alpha = 0.75)
     plt.xlabel("Quantidades de clientes")
@@ -171,7 +170,7 @@ def AgeWithHousing(Bank_Data):
     AgeHousingDF = pd.DataFrame({"Age Housing": tempArray})
 
     mpl.use("Agg")
-    plt.figure(figsize=(15, 6))
+    plt.figure(figsize = (13,8))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
     sns.set_style(rc=custom_style)
@@ -197,7 +196,7 @@ def AgeWithDefault(Bank_Data):
     AgeDefaultDF = pd.DataFrame({"Age Default": tempArray})
 
     mpl.use("Agg")
-    plt.figure(figsize=(15, 6))
+    plt.figure(figsize = (13,8))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
     sns.set_style(rc=custom_style)
@@ -217,7 +216,7 @@ def ContactWithDuration(Bank_Data):
     new_style = {'grid': False}
 
     mpl.use("Agg")
-    plt.figure(figsize = (15,6))
+    plt.figure(figsize = (13,8))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
     sns.set_style(rc=custom_style)
@@ -243,13 +242,13 @@ def ContactWithAge(Bank_Data):
     AgeContactDF = pd.DataFrame({"Age Contact": tempArray})
 
     mpl.use("Agg")
-    plt.figure(figsize=(15, 6))
+    plt.figure(figsize = (13,8))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
     sns.set_style(rc=custom_style)
     plt.title("Idades que mais utilizam determinados meios de contatos")
     sns.countplot(y='Age Contact', data=AgeContactDF, palette = "magma", alpha = 0.75)
-    plt.ylabel('Groupo Etário / Tipo de contato')
+    plt.ylabel('Grupo Etário / Tipo de contato')
     plt.xlabel('Quantidade de pessoas')
     bytes_image = io.BytesIO()
     plt.savefig(bytes_image, format='png')
@@ -271,7 +270,7 @@ def StatusCampaign(Bank_Data):
     StatusDF = pd.DataFrame({'Status':TempArray})
 
     mpl.use("Agg")
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize = (13,8))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
     sns.set_style(rc=custom_style)

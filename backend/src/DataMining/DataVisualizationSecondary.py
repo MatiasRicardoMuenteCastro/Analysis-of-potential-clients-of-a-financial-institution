@@ -50,7 +50,7 @@ def BalanceWithBlueCollar(Bank_Data):
     new_style = {'grid': False}
     BlueCollarDF = OrganizeAscending(Bank_Data,'blue-collar')
     mpl.use("Agg")
-    plt.figure(figsize=(15, 6))
+    plt.figure(figsize = (13,8))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
     sns.set_style(rc=custom_style)
@@ -70,7 +70,7 @@ def BalanceWithRetired(Bank_Data):
     new_style = {'grid': False}
     RetiredDF = OrganizeAscending(Bank_Data, 'retired')
     mpl.use("Agg")
-    plt.figure(figsize=(17, 6))
+    plt.figure(figsize = (13,8))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
     sns.set_style(rc=custom_style)
@@ -107,7 +107,7 @@ def BalanceWithManagement(Bank_Data):
     groupSeries = groupSeries.drop_duplicates().reset_index(drop = True)
     ManagementDF['balance_agroupment'] = groupSeries
     mpl.use("Agg")
-    plt.figure(figsize=(20, 6))
+    plt.figure(figsize = (13,8))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
     sns.set_style(rc=custom_style)
@@ -128,7 +128,7 @@ def BalanceWithTechnician(Bank_Data):
     new_style = {'grid': False}
     technician = OrganizeAscending(Bank_Data, 'technician')
     mpl.use("Agg")
-    plt.figure(figsize=(18, 6))
+    plt.figure(figsize = (13,8))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
     sns.set_style(rc=custom_style)
@@ -148,7 +148,7 @@ def BalanceWithAdmin(Bank_Data):
     new_style = {'grid': False}
     admins = OrganizeAscending(Bank_Data, 'admin.')
     mpl.use("Agg")
-    plt.figure(figsize=(18, 6))
+    plt.figure(figsize = (13,8))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
     sns.set_style(rc=custom_style)
@@ -168,7 +168,7 @@ def BalanceWithServices(Bank_Data):
     new_style = {'grid': False}
     services = OrganizeAscending(Bank_Data, 'services')
     mpl.use("Agg")
-    plt.figure(figsize=(18, 6))
+    plt.figure(figsize = (13,8))
     plt.style.use("ggplot")
     plt.rc('axes', **new_style)
     sns.set_style(rc=custom_style)
