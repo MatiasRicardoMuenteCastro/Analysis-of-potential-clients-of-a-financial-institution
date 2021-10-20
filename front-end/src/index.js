@@ -1,4 +1,6 @@
 async function getLogin(){
+    document.getElementById("error").innerHTML = ""
+
     UserName = document.querySelector("#IdUser").value;
     pass = document.querySelector("#IdPass").value;
 
@@ -20,7 +22,7 @@ async function getLogin(){
             }
         }
         catch(error){
-            console.log('Erro na autenticação da conta')
+            document.getElementById("error").innerHTML = "Ocorreu um erro na autenticação da conta"
         }
     }
 
@@ -40,12 +42,12 @@ function getClickUpload(){
     window.close()
 }
 
-function getClickLogout(){
-    window.open("/index.html")
+function getClickManagment(){
+    window.open("AccountsManagment.html")
     window.close()
 }
 
 function getClickLogout(){
-    window.open("AccountsManagment.html")
+    window.open("/index.html")
     window.close()
 }

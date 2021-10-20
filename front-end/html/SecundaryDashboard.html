@@ -29,7 +29,7 @@
         countError = 0;
         nextCount = 0;
         const header = new Headers();
-        header.append("TOKEN","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJUb2tlbiI6IjZjMjNmOTdmZmY3Nzg4MWQyMjhiMDBmMmY4ODdlZjBhNzE2MTcyOGEyN2M3MzkzN2Q4NTA3OGViNjExNzhkMTciLCJleHAiOjE2MzQ1Mjg1MTF9.OoyE5u0Ef0VoZX7ZB7IrPoku9TQALlEco_8bUhoCmDY")
+        header.append("id","4iew9moc9v")
         
 
         const imgs = document.getElementById("img");
@@ -48,10 +48,12 @@
                     const imageObj = await response.json()
                     imageBytes = imageObj.image
                     document.getElementById(`graph${i}`).src = "data:image/png;base64," +imageBytes;
+                    if (imageBytes == undefined){
+                        countError = countError+1
+                        document.getElementById("ErrorLabel").innerHTML = `Falha no carregamento do gráfico: ${i+1}`
+                    }
                 }
-                    
                 catch(error){
-                    console.log(error)
                     countError = countError+1
                     document.getElementById("ErrorLabel").innerHTML = `Falha no carregamento do gráfico: ${i+1}`
                 }

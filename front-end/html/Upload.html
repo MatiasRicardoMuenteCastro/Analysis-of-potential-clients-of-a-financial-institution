@@ -23,6 +23,7 @@
         <p id = "status"></p>
         <p id = "labelStatus">Status da mineração: (A mineração de dados pode demorar por volta de 20 segundos devido a ela ser bem pesada)</p>
         <p id = "statusMine"></p>
+        <p id = "statusServer"></p>
     </div>
     <script>
         const form = document.getElementById('myForm')
@@ -36,7 +37,7 @@
             const formData = new FormData()
             
             formData.append("excel", fileSend.files[0])
-            header.append("TOKEN","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJUb2tlbiI6IjZhMGQ0YWU5MDVlOTgxNDEzYzczYjAzOTFjNmYxYTlkY2M4Y2NlN2RmMzRhZjZiZjE4NzZlM2JlYWZjODg2ODgiLCJleHAiOjE2MzQ0ODUyNzF9.moZMF1nT0dKAY9-_0RWvy0QGljGtSjaw4_B-XOP-z0g")
+            header.append("id","4iew9moc9v")
 
             url = "http://localhost:5000/Upload"
 
@@ -44,7 +45,7 @@
                 method: "post",
                 headers: header,
                 body: formData
-            }).catch(console.error)
+            }).catch(document.getElementById("statusServer").innerHTML = 'Falha no upload do dataset', document.getElementsByTagName("style")[0].innerHTML += "#statusServer{color: red}")
 
             let result = await response.json()
 
@@ -62,13 +63,13 @@
         async function buttonMine(){
             document.getElementById("statusMine").innerHTML = ""
             const header = new Headers()
-            header.append("TOKEN","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJUb2tlbiI6IjZhMGQ0YWU5MDVlOTgxNDEzYzczYjAzOTFjNmYxYTlkY2M4Y2NlN2RmMzRhZjZiZjE4NzZlM2JlYWZjODg2ODgiLCJleHAiOjE2MzQ0ODUyNzF9.moZMF1nT0dKAY9-_0RWvy0QGljGtSjaw4_B-XOP-z0g")
+            header.append("id","4iew9moc9v")
             
             const response = await fetch('http://localhost:5000/Data_Mining',{
                 method:"PUT",
                 headers:header
             
-            }).catch(console.error)
+            }).catch(document.getElementById("statusServer").innerHTML = 'Falha na mineração de dados', document.getElementsByTagName("style")[0].innerHTML += "#statusServer{color: red}")
             let result = await response.json()
 
             if (result.sucess == "A mineração de dados foi concluida"){

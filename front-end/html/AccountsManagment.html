@@ -6,10 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Contas</title>
     <link href = "/styles/stylesAccounts.css" rel = "stylesheet">
+    <style>
+    </style>
 </head>
 <body>
     <div id = "Panel">
-        <button id = "refresh" onclick = refreshTable()>Atualizar</button>
+        <p id = "CadastroLabel">Cadastre um novo usuario</p>
+        <input id = "user" type = "text" placeholder="Digite o nome do usuário" autofocus></input>
+        <input id = "password" type = "password" placeholder="Digite sua senha"></input>
+        <button id = "CadastroButton" onclick= "insertUser()">Cadastrar</button>
+        <button id = "delete" onclick="Delete()">Deletar</button>
+        <button id = "refresh" onclick = "refreshTable()">Atualizar</button>
+        <p id = "error">Status da operação</p>
         <table>
             <caption>Lista de usuários com acesso a esta aplicação</caption>
             <thead>
@@ -23,6 +31,13 @@
         </table>
     </div>
     <script>
+        const header = new Headers()
+        header.append("id","4iew9moc9v")
+        count = 0
+        UserID = null
+        countSelect = 0
+        LastIdButton = null
+
         async function getUsers(){
             try{
             const response = await fetch(`http://localhost:5000/users`,{
@@ -32,7 +47,8 @@
             const usuarios = await response.json()
                 ArrayUsers = usuarios.usuarios
                 for (users of ArrayUsers){
-                    document.getElementById("tbody").innerHTML += `<tr><td>${users[0]}</td> <td>${users[1]}</td> </tr>`
+                    count = count+1
+                    document.getElementById("tbody").innerHTML += `<tr id = "u${count}" onclick = "selectDelete(this)"><td id = "u${count}ID" >${users[0]}</td> <td>${users[1]}</td> </tr>`
                 }
             }
             catch(error){
@@ -40,14 +56,86 @@
             }
         }
 
-        const header = new Headers()
-        header.append("id","4iew9moc9v")
         getUsers()
-        
 
-        async function refreshTable(){
+        function refreshTable(){
             document.getElementById("tbody").innerHTML = ""
+            LastIdButton = null
+            UserID = null
+            countSelect = 0
             getUsers()
+        }
+
+        async function insertUser(){
+            user = document.getElementById("user").value
+            password = document.getElementById("password").value
+
+            count = count+1
+
+            try{
+                const response = await fetch('http://localhost:5000/user/create',{
+                method:"POST",
+                headers: header,
+                body:JSON.stringify({
+                    user: user,
+                    password: password
+                })
+            })
+                const login = await response.json()
+                if (login.id != undefined && login.user != undefined){
+                    document.getElementById("tbody").innerHTML += `<tr id = "u${count}" onclick = "selectDelete(this)"><td id = "u${count}ID" >${login.id}</td> <td>${login.user}</td> </tr>`
+                    document.getElementById("error").innerHTML = "O usuário foi cadastrado com sucesso!"
+                    document.getElementsByTagName("style")[0].innerHTML += "#error{color: green}"
+                }
+                else{
+                    document.getElementById("error").innerHTML = "Error: "+ login.error
+                    document.getElementsByTagName("style")[0].innerHTML += "#error{color: red}"
+                }
+            }
+            catch(error){
+                console.log('Erro na autenticação da conta')
+            }
+        }
+
+        function selectDelete(idButton){
+            document.getElementById("error").innerHTML = "Status da operação"
+            document.getElementsByTagName("style")[0].innerHTML = ""
+            countSelect = countSelect+1
+            if (countSelect <= 1){
+                VarIdButton = idButton.id
+                UserIDPosition = VarIdButton+"ID"
+                UserID = document.getElementById(UserIDPosition).innerHTML
+                document.getElementsByTagName("style")[0].innerHTML += `table #${VarIdButton}{background-color: rgba(0, 0, 0, 0.815);}`
+            }
+            else if(countSelect > 1){
+                document.getElementsByTagName("style")[0].innerHTML = ""
+                LastIdButton = null
+                UserID = null
+                countSelect = 0
+            }
+        }
+
+        async function Delete(){
+            document.getElementById("error").innerHTML = ""
+            countSelect = 0
+            document.getElementsByTagName("style")[0].innerHTML = ''
+            const response = await fetch('http://localhost:5000/user/delete',{
+                method:"DELETE",
+                headers: header,
+                body:JSON.stringify({
+                    user_id: UserID
+                })
+            })
+                const deleteRes = await response.json()
+                
+                if(deleteRes.sucess != undefined){
+                    document.getElementById("error").innerHTML = deleteRes.sucess
+                    document.getElementsByTagName("style")[0].innerHTML += "#error{color: green}"
+                }
+                else{
+                    document.getElementById("error").innerHTML = "Error: "+ deleteRes.error
+                    document.getElementsByTagName("style")[0].innerHTML += "#error{color: red}"
+                }
         }
 
     </script>
