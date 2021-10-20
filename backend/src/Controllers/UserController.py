@@ -22,6 +22,9 @@ def UserDelete():
     except:
         return json.dumps({"error": "Preencha a requisição com os dados indicados."}), 400
 
+    if not UserJson['user_id']:
+        return json.dumps({"error": "Por favor selecione algum usuário para sua remoção"}), 400
+
     if not UserId:
         return json.dumps({"error": "É necessário ter um id para prosseguir"}), 400
 
