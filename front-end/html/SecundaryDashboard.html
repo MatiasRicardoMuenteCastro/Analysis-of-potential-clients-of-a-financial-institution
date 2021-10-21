@@ -26,10 +26,11 @@
     </div>
     <button onclick="next()" id = "ButtonNext"></button>
     <script defer>
+        idAuth = localStorage.getItem("id");
         countError = 0;
         nextCount = 0;
         const header = new Headers();
-        header.append("id","4iew9moc9v")
+        header.append("id",idAuth)
         
 
         const imgs = document.getElementById("img");

@@ -28,6 +28,7 @@
         <p id = "statusServer"></p>
     </div>
     <script>
+        idAuth = localStorage.getItem("id");
         const form = document.getElementById('myForm')
         const inputFile = document.getElementById('fileSend')
 
@@ -42,7 +43,7 @@
             const formData = new FormData()
             
             formData.append("excel", fileSend.files[0])
-            header.append("id","4iew9moc9v")
+            header.append("id",idAuth)
 
             url = "http://localhost:5000/Upload"
 
@@ -79,7 +80,7 @@
             document.getElementById('load').style.visibility = "visible";
             document.getElementById("LoadLabel").innerHTML = "Fazendo a mineração de dados do dataset..."
             const header = new Headers()
-            header.append("id","4iew9moc9v")
+            header.append("id",idAuth)
             try{
             const response = await fetch('http://localhost:5000/Data_Mining',{
                 method:"PUT",

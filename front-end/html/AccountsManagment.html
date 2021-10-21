@@ -31,8 +31,9 @@
         </table>
     </div>
     <script>
+        idAuth = localStorage.getItem("id");
         const header = new Headers()
-        header.append("id","4iew9moc9v")
+        header.append("id",idAuth)
         count = 0
         UserID = null
         countSelect = 0
