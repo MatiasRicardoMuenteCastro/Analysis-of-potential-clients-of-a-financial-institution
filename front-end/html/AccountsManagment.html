@@ -52,7 +52,8 @@
                 }
             }
             catch(error){
-                console.error(error)
+                document.getElementById("error").innerHTML = "Error na comunicação com o servidor"
+                document.getElementsByTagName("style")[0].innerHTML += "#error{color: red}"
             }
         }
 
@@ -93,7 +94,7 @@
                 }
             }
             catch(error){
-                console.log('Erro na autenticação da conta')
+                console.error(error)
             }
         }
 
@@ -116,7 +117,6 @@
         }
 
         async function Delete(){
-            document.getElementById("error").innerHTML = ""
             countSelect = 0
             document.getElementsByTagName("style")[0].innerHTML = ''
             const response = await fetch('http://localhost:5000/user/delete',{
