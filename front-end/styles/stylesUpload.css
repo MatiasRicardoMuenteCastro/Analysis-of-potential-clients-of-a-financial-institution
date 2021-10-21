@@ -8,6 +8,29 @@ body{
     overflow: hidden;
 }
 
+.load{
+    position: fixed;
+    top: 40px;
+    height: 60px;
+    width: 60px;
+    border: 8px solid rgba(0,0,0, .1);
+    border-left-color: #6f00ff;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+    visibility: hidden;
+}
+
+#LoadLabel{
+    position: fixed;
+    top: 10px;
+    margin: 0px;
+    color: white;
+}
+
+@keyframes spin{
+    to{transform: rotate(360deg);}
+}
+
 #back{
     position: fixed;
     background: url('../images/botao-home.png');
