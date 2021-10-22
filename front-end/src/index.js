@@ -1,4 +1,6 @@
+console.log(localStorage.getItem("id"))
 async function getLogin(){
+
     document.getElementById("error").innerHTML = ""
 
     UserName = document.querySelector("#IdUser").value;
@@ -50,5 +52,7 @@ function getClickManagment(){
 
 function getClickLogout(){
     window.open("/index.html")
+    localStorage.setItem("id", undefined);
     window.close()
+
 }
