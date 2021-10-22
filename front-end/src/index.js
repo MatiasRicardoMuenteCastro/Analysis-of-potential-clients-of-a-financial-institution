@@ -1,11 +1,10 @@
-console.log(localStorage.getItem("id"))
+localStorage.setItem("id",undefined)
 async function getLogin(){
 
     document.getElementById("error").innerHTML = ""
 
     UserName = document.querySelector("#IdUser").value;
     pass = document.querySelector("#IdPass").value;
-
         try{
             const response = await fetch('http://localhost:5000/session',{
             method:"POST",
@@ -30,29 +29,3 @@ async function getLogin(){
         }
     }
 
-function getClickMain(){
-    window.open("MainDashboard.html")
-    window.close()
-}
-
-function getClickSecundary(){
-    window.open("SecundaryDashboard.html")
-    window.close()
-}
-
-function getClickUpload(){
-    window.open("Upload.html")
-    window.close()
-}
-
-function getClickManagment(){
-    window.open("AccountsManagment.html")
-    window.close()
-}
-
-function getClickLogout(){
-    window.open("/index.html")
-    localStorage.setItem("id", undefined);
-    window.close()
-
-}
