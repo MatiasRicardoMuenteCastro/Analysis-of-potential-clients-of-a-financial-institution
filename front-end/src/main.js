@@ -19,7 +19,7 @@ function getClickManagment(){
 }
 
 function getClickLogout(){
-    window.open("/index.html")
+    window.open("../index.html")
     localStorage.setItem("id", undefined);
     window.close()
 

@@ -17,7 +17,7 @@ async function getLogin(){
             if (login.id != undefined && login.user != undefined){
                 localStorage.setItem("id", login.id);
 
-                window.open("/html/main.html")
+                window.open("./html/main.html")
                 window.close()
             }
             else{
