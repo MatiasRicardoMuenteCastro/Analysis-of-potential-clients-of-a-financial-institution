@@ -180,17 +180,3 @@ def BalanceWithServices(Bank_Data):
     plt.savefig(bytes_image, format='png')
     bytes_image.seek(0)
     return bytes_image
-
-#file_path = "../../Dataset/Bank_Data.xlsx"
-#Bank_Data = pd.read_excel(file_path)
-
-#Grupo do saldo alto
-#BalanceWithBlueCollar(Bank_Data)
-#BalanceWithManagement(Bank_Data)
-#BalanceWithTechnician(Bank_Data)
-#Grupo do saldo alto/médio
-#BalanceWithRetired(Bank_Data)
-#BalanceWithAdmin(Bank_Data)
-#BalanceWithServices(Bank_Data)
-
-#Enviar o value counts de cada tabela, para dar uma noção maior sobre os valoresdo gráfico

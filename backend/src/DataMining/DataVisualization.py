@@ -282,20 +282,3 @@ def StatusCampaign(Bank_Data):
     plt.savefig(bytes_image, format='png')
     bytes_image.seek(0)
     return bytes_image
-
-#file_path = "../../Dataset/Bank_Data.xlsx"
-#Bank_Data = pd.read_excel(file_path)
-
-#AgeWithBalance(Bank_Data)
-#AgeWithDuration(Bank_Data)
-#ClientsQuantityAge(Bank_Data)
-#AgeMarital(Bank_Data)
-#JobsQuanity(Bank_Data)
-#BalanceWithJob(Bank_Data)
-#AgeWithLoan(Bank_Data)
-#AgeWithHousing(Bank_Data)
-#AgeWithDefault(Bank_Data)
-#ContactWithDuration(Bank_Data)
-#ContactWithAge(Bank_Data)
-#StatusCampaigns(Bank_Data)
-#Fazer o value.counts de cada dataframe possivel para enviar ao front-end
