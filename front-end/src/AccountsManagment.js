@@ -29,6 +29,8 @@ getUsers()
 
 function refreshTable(){
     document.getElementById("tbody").innerHTML = ""
+    document.getElementById("error").innerHTML = "Status da operação"
+    document.getElementsByTagName("style")[0].innerHTML += "#error{color: white}"
     LastIdButton = null
     UserID = null
     countSelect = 0
@@ -36,6 +38,9 @@ function refreshTable(){
 }
 
 async function insertUser(){
+    document.getElementById("error").innerHTML = "Status da operação"
+    document.getElementsByTagName("style")[0].innerHTML += "#error{color: white}"
+
     user = document.getElementById("user").value
     password = document.getElementById("password").value
 
@@ -61,8 +66,9 @@ async function insertUser(){
             document.getElementsByTagName("style")[0].innerHTML += "#error{color: red}"
         }
     }
-    catch(error){
-        console.error(error)
+    catch{
+        document.getElementById("error").innerHTML = "Error na comunicação com o servidor"
+        document.getElementsByTagName("style")[0].innerHTML += "#error{color: red}"
     }
 }
 
@@ -85,25 +91,34 @@ function selectDelete(idButton){
 }
 
 async function Delete(){
+    document.getElementById("error").innerHTML = "Status da operação"
+    document.getElementsByTagName("style")[0].innerHTML += "#error{color: white}"
+
     countSelect = 0
     document.getElementsByTagName("style")[0].innerHTML = ''
-    const response = await fetch('http://localhost:5000/user/delete',{
-        method:"DELETE",
-        headers: header,
-        body:JSON.stringify({
-            user_id: UserID
+    try{
+        const response = await fetch('http://localhost:5000/user/delete',{
+            method:"DELETE",
+            headers: header,
+            body:JSON.stringify({
+                user_id: UserID
+            })
         })
-    })
-        const deleteRes = await response.json()
+            const deleteRes = await response.json()
         
-        if(deleteRes.sucess != undefined){
-            document.getElementById("error").innerHTML = deleteRes.sucess
-            document.getElementsByTagName("style")[0].innerHTML += "#error{color: green}"
-        }
-        else{
-            document.getElementById("error").innerHTML = "Error: "+ deleteRes.error
-            document.getElementsByTagName("style")[0].innerHTML += "#error{color: red}"
-        }
+            if(deleteRes.sucess != undefined){
+                document.getElementById("error").innerHTML = deleteRes.sucess
+                document.getElementsByTagName("style")[0].innerHTML += "#error{color: green}"
+            }
+            else{
+                document.getElementById("error").innerHTML = "Error: "+ deleteRes.error
+                document.getElementsByTagName("style")[0].innerHTML += "#error{color: red}"
+            }
+    }
+    catch{
+        document.getElementById("error").innerHTML = "Error na comunicação com o servidor"
+        document.getElementsByTagName("style")[0].innerHTML += "#error{color: red}"
+    }
 }
 
 function back(){

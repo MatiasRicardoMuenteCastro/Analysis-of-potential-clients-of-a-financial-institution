@@ -1,3 +1,6 @@
+  *{
+    font-family: 'Balsamiq Sans',cursive;
+  }
   body{
     margin: 0px;
     background-color: #2F1252;
@@ -7,11 +10,17 @@
     width: 220px;
     height: 940px;
     border-right: 1px solid rgba(63, 56, 56, 0.582);
+    border-radius: 30px;
   }
 
   .menu:hover{
     background-color: rgba(83, 83, 83, 0.247);
     transition: all 0.5s linear;
+  }
+
+  #NomeTxt{
+    position: relative;
+    top: 40px;
   }
 
   .menu #NomeTxt,#MenuTxt{
@@ -20,10 +29,10 @@
     margin-left: 20px;
   }
   #MenuTxt{
-    width: 100px;
-    margin-top: 70px;
+    width: 110px;
+    margin-top: 100px;
     font-size: 16px;
-    margin-left: 38px;
+    margin-left: 50px;
     border-bottom: 1px solid white;
   }
 
@@ -42,10 +51,11 @@
   border: 0px;
   border-radius: 15px;
   font-size: 15px;
+  margin-left: 20px;
 }
 
 #ButtonAccounts{
-  margin-left: 8px;
+  margin-left: 20px;
 }
 
 .menu ul li button:hover{
@@ -60,5 +70,5 @@
 }
 
 .menu ul li #ButtonLogout{
-  margin-top: 550px;
+  margin-top: 500px;
 }
