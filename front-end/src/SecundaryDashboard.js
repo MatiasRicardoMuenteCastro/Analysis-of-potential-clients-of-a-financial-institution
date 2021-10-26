@@ -1,4 +1,4 @@
-idAuth = localStorage.getItem("id");
+idAuth = sessionStorage.getItem("id");
 countError = 0;
 nextCount = 0;
 const header = new Headers();
@@ -19,6 +19,9 @@ async function getImages(){
                 headers: header
             })
             const imageObj = await response.json()
+            if(imageObj.error != undefined){
+                document.getElementById("AnotherError").innerHTML = `${imageObj.error}`
+            }
             imageBytes = imageObj.image
             document.getElementById(`graph${i}`).src = "data:image/png;base64," +imageBytes;
             if (imageBytes == undefined){
@@ -39,6 +42,7 @@ async function getImages(){
         }
     }
     document.getElementById('ErrorLabel').style.visibility = "hidden";
+    document.getElementById('AnotherError').style.visibility = "hidden";
 }
 getImages()
 let idx = 0;

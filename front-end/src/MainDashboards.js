@@ -1,11 +1,11 @@
 countError = 0;
 nextCount = 0;
-idAuth = localStorage.getItem("id");
+idAuth = sessionStorage.getItem("id");
 const header = new Headers();
 header.append("id",idAuth)
 const imgs = document.getElementById("img");
 const img = document.querySelectorAll("#img img");
-        
+
 async function getImages(){
     for(i = 0; i < img.length; i++){
         try{
@@ -18,6 +18,9 @@ async function getImages(){
             })
 
             const imageObj = await response.json()
+            if(imageObj.error != undefined){
+                document.getElementById("AnotherError").innerHTML = `${imageObj.error}`
+            }
             imageBytes = imageObj.image
             document.getElementById(`graph${i}`).src = "data:image/png;base64," +imageBytes;
             if (imageBytes == undefined){
@@ -38,6 +41,7 @@ async function getImages(){
                 }
             }
     document.getElementById('ErrorLabel').style.visibility = "hidden";
+    document.getElementById('AnotherError').style.visibility = "hidden";
 }
 getImages()
 let idx = 0;

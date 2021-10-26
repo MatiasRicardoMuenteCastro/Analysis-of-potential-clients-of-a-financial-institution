@@ -1,4 +1,4 @@
-localStorage.setItem("id",undefined)
+sessionStorage.setItem("id",undefined)
 async function getLogin(){
 
     document.getElementById("error").innerHTML = ""
@@ -15,7 +15,7 @@ async function getLogin(){
             })
             const login = await response.json()
             if (login.id != undefined && login.user != undefined){
-                localStorage.setItem("id", login.id);
+                sessionStorage.setItem("id", login.id);
 
                 window.open("./html/main.html")
                 window.close()

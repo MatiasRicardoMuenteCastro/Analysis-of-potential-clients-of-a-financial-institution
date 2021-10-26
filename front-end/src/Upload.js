@@ -1,4 +1,4 @@
-idAuth = localStorage.getItem("id");
+idAuth = sessionStorage.getItem("id");
 const form = document.getElementById('myForm')
 const inputFile = document.getElementById('fileSend')
 
@@ -63,7 +63,7 @@ async function buttonMine(){
         document.getElementById("statusMine").innerHTML = "Sucesso: "+result.sucess;
         document.getElementsByTagName("style")[0].innerHTML += "#statusMine{color: green; margin-top: -15px}"
     }
-    else if (result.error == "Por favor faça o upload de um dataset compátivel com o modelo de mineração"){
+    else if (result.error != ""){
         document.getElementById("statusMine").innerHTML = "Error: "+result.error;
         document.getElementsByTagName("style")[0].innerHTML += "#statusMine{color: red; margin-top: -15px}"
     }

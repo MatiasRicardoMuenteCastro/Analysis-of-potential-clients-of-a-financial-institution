@@ -20,7 +20,7 @@ function getClickManagment(){
 
 function getClickLogout(){
     window.open("../index.html")
-    localStorage.setItem("id", undefined);
+    sessionStorage.setItem("id", undefined);
     window.close()
 
 }

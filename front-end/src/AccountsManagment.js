@@ -1,4 +1,4 @@
-idAuth = localStorage.getItem("id");
+idAuth = sessionStorage.getItem("id");
 const header = new Headers()
 header.append("id",idAuth)
 count = 0
@@ -14,9 +14,14 @@ async function getUsers(){
     })
     const usuarios = await response.json()
         ArrayUsers = usuarios.usuarios
-        for (users of ArrayUsers){
-            count = count+1
-            document.getElementById("tbody").innerHTML += `<tr id = "u${count}" onclick = "selectDelete(this)"><td id = "u${count}ID" >${users[0]}</td> <td>${users[1]}</td> </tr>`
+        if (usuarios.usuarios != undefined){
+            for (users of ArrayUsers){
+                count = count+1
+                document.getElementById("tbody").innerHTML += `<tr id = "u${count}" onclick = "selectDelete(this)"><td id = "u${count}ID" >${users[0]}</td> <td>${users[1]}</td> </tr>`
+        }
+        }else{
+            document.getElementById("error").innerHTML = `${usuarios.error}`
+            document.getElementsByTagName("style")[0].innerHTML += "#error{color: red}"
         }
     }
     catch(error){

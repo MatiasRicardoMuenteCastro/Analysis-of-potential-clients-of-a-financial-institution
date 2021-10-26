@@ -40,6 +40,13 @@ body{
     right: 20px;
     visibility: visible;
 }
+#AnotherError{
+    position: fixed;
+    top: 160px;
+    color: red;
+    right: 20px;
+    visibility: visible;
+}
 
 #GraphCount{
     position: fixed;
