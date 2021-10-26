@@ -33,7 +33,7 @@ def BalanceBlueCollarRoute():
         file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
     else:
-        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
+        return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
     figure = DataVisualizationSecondary.BalanceWithBlueCollar(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -65,7 +65,7 @@ def BalanceRetiredRoute():
         file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
     else:
-        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
+        return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
     figure = DataVisualizationSecondary.BalanceWithRetired(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -97,7 +97,7 @@ def BalanceManagementRoute():
         file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
     else:
-        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
+        return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
     figure = DataVisualizationSecondary.BalanceWithManagement(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -129,7 +129,7 @@ def BalanceTechnicianRoute():
         file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
     else:
-        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
+        return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
     figure = DataVisualizationSecondary.BalanceWithTechnician(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -161,7 +161,7 @@ def BalanceAdminRoute():
         file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
     else:
-        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
+        return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
     figure = DataVisualizationSecondary.BalanceWithAdmin(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -193,7 +193,7 @@ def BalanceServicesRoute():
         file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
     else:
-        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
+        return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
     figure = DataVisualizationSecondary.BalanceWithServices(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')

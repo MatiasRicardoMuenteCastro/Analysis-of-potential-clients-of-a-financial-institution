@@ -33,7 +33,7 @@ def AgeWithBalanceRoute():
         file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
     else:
-        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
+        return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
     figure = DataVisualization.AgeWithBalance(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -66,7 +66,7 @@ def AgeWithDurationRoute():
         file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
     else:
-        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
+        return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
     figure = DataVisualization.AgeWithDuration(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -98,7 +98,7 @@ def ClientsQuantityRoute():
         file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
     else:
-        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
+        return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
     figure = DataVisualization.ClientsQuantityAge(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -130,7 +130,7 @@ def AgeMaritalRoute():
         file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
     else:
-        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
+        return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
     figure = DataVisualization.AgeMarital(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -162,7 +162,7 @@ def JobsQuantityRoute():
         file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
     else:
-        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
+        return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
     figure = DataVisualization.JobsQuanity(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -194,7 +194,7 @@ def BalanceWithJobRoute():
         file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
     else:
-        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
+        return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
     figure = DataVisualization.BalanceWithJob(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -226,7 +226,7 @@ def AgeWithLoanRoute():
         file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
     else:
-        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
+        return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
     figure = DataVisualization.AgeWithLoan(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -258,7 +258,7 @@ def AgeWithHousingRoute():
         file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
     else:
-        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
+        return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
     figure = DataVisualization.AgeWithHousing(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -290,7 +290,7 @@ def AgeWithDefaultRoute():
         file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
     else:
-        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
+        return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
     figure = DataVisualization.AgeWithDefault(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -322,7 +322,7 @@ def ContactWithDurationRoute():
         file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
     else:
-        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
+        return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
     figure = DataVisualization.ContactWithDuration(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -354,7 +354,7 @@ def ContactWithAgeRoute():
         file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
     else:
-        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
+        return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
     figure = DataVisualization.ContactWithAge(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
@@ -386,7 +386,7 @@ def StatusCampaignRoute():
         file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
     else:
-        return json.dumps({"error":"Nenhum dataset de mineração foi encontrado"}),412
+        return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
     figure = DataVisualization.StatusCampaign(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
