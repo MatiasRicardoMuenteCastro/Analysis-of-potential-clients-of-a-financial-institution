@@ -46,6 +46,7 @@ body{
     color: red;
     right: 20px;
     visibility: visible;
+    width: 300px;
 }
 
 #GraphCount{
