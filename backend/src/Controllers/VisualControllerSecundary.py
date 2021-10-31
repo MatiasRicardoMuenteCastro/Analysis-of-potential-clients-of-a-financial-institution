@@ -35,7 +35,11 @@ def BalanceBlueCollarRoute():
     else:
         return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
-    figure = DataVisualizationSecondary.BalanceWithBlueCollar(Bank_Data)
+    try:
+        figure = DataVisualizationSecondary.BalanceWithBlueCollar(Bank_Data)
+    except:
+        return json.dumps({"error":"No minimo uma das colunas requisitadas para criar este gráfico não foram encontradas, isso acontece porque ela estava mal-formatada ou tinha poucos dados"}),400
+
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
 
     conn.close()
@@ -67,7 +71,11 @@ def BalanceRetiredRoute():
     else:
         return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
-    figure = DataVisualizationSecondary.BalanceWithRetired(Bank_Data)
+    try:
+        figure = DataVisualizationSecondary.BalanceWithRetired(Bank_Data)
+    except:
+        return json.dumps({"error":"No minimo uma das colunas requisitadas para criar este gráfico não foram encontradas, isso acontece porque ela estava mal-formatada ou tinha poucos dados"}),400
+
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
 
     conn.close()
@@ -99,7 +107,11 @@ def BalanceManagementRoute():
     else:
         return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
-    figure = DataVisualizationSecondary.BalanceWithManagement(Bank_Data)
+    try:
+        figure = DataVisualizationSecondary.BalanceWithManagement(Bank_Data)
+    except:
+        return json.dumps({"error":"No minimo uma das colunas requisitadas para criar este gráfico não foram encontradas, isso acontece porque ela estava mal-formatada ou tinha poucos dados"}),400
+
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
 
     conn.close()
@@ -129,9 +141,13 @@ def BalanceTechnicianRoute():
         file_path = "./Dataset/Mined/"+ListDirMined[0]
         Bank_Data = pd.read_excel(file_path)
     else:
-        return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
+        return json.dumps({"error": "Nenhum dataset pós mineração de dados foi encontrado"}), 412
 
-    figure = DataVisualizationSecondary.BalanceWithTechnician(Bank_Data)
+    try:
+        figure = DataVisualizationSecondary.BalanceWithTechnician(Bank_Data)
+    except:
+        return json.dumps({"error":"No minimo uma das colunas requisitadas para criar este gráfico não foram encontradas, isso acontece porque ela estava mal-formatada ou tinha poucos dados"}),400
+
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
 
     conn.close()
@@ -163,7 +179,11 @@ def BalanceAdminRoute():
     else:
         return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
-    figure = DataVisualizationSecondary.BalanceWithAdmin(Bank_Data)
+    try:
+        figure = DataVisualizationSecondary.BalanceWithAdmin(Bank_Data)
+    except:
+        return json.dumps({"error":"No minimo uma das colunas requisitadas para criar este gráfico não foram encontradas, isso acontece porque ela estava mal-formatada ou tinha poucos dados"}),400
+
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
 
     conn.close()
@@ -195,7 +215,11 @@ def BalanceServicesRoute():
     else:
         return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
-    figure = DataVisualizationSecondary.BalanceWithServices(Bank_Data)
+    try:
+        figure = DataVisualizationSecondary.BalanceWithServices(Bank_Data)
+    except:
+        return json.dumps({"error":"No minimo uma das colunas requisitadas para criar este gráfico não foram encontradas, isso acontece porque ela estava mal-formatada ou tinha poucos dados"}),400
+
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
 
     conn.close()

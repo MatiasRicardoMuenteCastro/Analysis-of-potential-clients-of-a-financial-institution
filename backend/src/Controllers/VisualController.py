@@ -35,7 +35,12 @@ def AgeWithBalanceRoute():
     else:
         return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
-    figure = DataVisualization.AgeWithBalance(Bank_Data)
+    try:
+        figure = DataVisualization.AgeWithBalance(Bank_Data)
+    except:
+        return json.dumps({"error":"No minimo uma das colunas requisitadas para criar este gráfico não foram encontradas, isso acontece porque ela estava mal-formatada ou tinha poucos dados"}),400
+
+
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
 
     conn.close()
@@ -68,7 +73,12 @@ def AgeWithDurationRoute():
     else:
         return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
-    figure = DataVisualization.AgeWithDuration(Bank_Data)
+    try:
+        figure = DataVisualization.AgeWithDuration(Bank_Data)
+    except:
+        return json.dumps({"error":"No minimo uma das colunas requisitadas para criar este gráfico não foram encontradas, isso acontece porque ela estava mal-formatada ou tinha poucos dados"}),400
+
+
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
 
     conn.close()
@@ -100,7 +110,12 @@ def ClientsQuantityRoute():
     else:
         return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
-    figure = DataVisualization.ClientsQuantityAge(Bank_Data)
+    try:
+        figure = DataVisualization.ClientsQuantityAge(Bank_Data)
+    except:
+        return json.dumps({"error":"No minimo uma das colunas requisitadas para criar este gráfico não foram encontradas, isso acontece porque ela estava mal-formatada ou tinha poucos dados"}),400
+
+
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
 
     conn.close()
@@ -132,7 +147,12 @@ def AgeMaritalRoute():
     else:
         return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
-    figure = DataVisualization.AgeMarital(Bank_Data)
+    try:
+        figure = DataVisualization.AgeMarital(Bank_Data)
+    except:
+        return json.dumps({"error":"No minimo uma das colunas requisitadas para criar este gráfico não foram encontradas, isso acontece porque ela estava mal-formatada ou tinha poucos dados"}),400
+
+
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
 
     conn.close()
@@ -164,7 +184,12 @@ def JobsQuantityRoute():
     else:
         return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
-    figure = DataVisualization.JobsQuanity(Bank_Data)
+    try:
+        figure = DataVisualization.JobsQuanity(Bank_Data)
+    except:
+        return json.dumps({"error":"No minimo uma das colunas requisitadas para criar este gráfico não foram encontradas, isso acontece porque ela estava mal-formatada ou tinha poucos dados"}),400
+
+
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
 
     conn.close()
@@ -196,7 +221,12 @@ def BalanceWithJobRoute():
     else:
         return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
-    figure = DataVisualization.BalanceWithJob(Bank_Data)
+    try:
+        figure = DataVisualization.BalanceWithJob(Bank_Data)
+    except:
+        return json.dumps({"error":"No minimo uma das colunas requisitadas para criar este gráfico não foram encontradas, isso acontece porque ela estava mal-formatada ou tinha poucos dados"}),400
+
+
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
 
     conn.close()
@@ -228,7 +258,11 @@ def AgeWithLoanRoute():
     else:
         return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
-    figure = DataVisualization.AgeWithLoan(Bank_Data)
+    try:
+        figure = DataVisualization.AgeWithLoan(Bank_Data)
+    except:
+        return json.dumps({"error":"No minimo uma das colunas requisitadas para criar este gráfico não foram encontradas, isso acontece porque ela estava mal-formatada ou tinha poucos dados"}),400
+
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
 
     conn.close()
@@ -260,7 +294,11 @@ def AgeWithHousingRoute():
     else:
         return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
-    figure = DataVisualization.AgeWithHousing(Bank_Data)
+    try:
+        figure = DataVisualization.AgeWithHousing(Bank_Data)
+    except:
+        return json.dumps({"error":"No minimo uma das colunas requisitadas para criar este gráfico não foram encontradas, isso acontece porque ela estava mal-formatada ou tinha poucos dados"}),400
+
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
 
     conn.close()
@@ -292,7 +330,11 @@ def AgeWithDefaultRoute():
     else:
         return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
-    figure = DataVisualization.AgeWithDefault(Bank_Data)
+    try:
+        figure = DataVisualization.AgeWithDefault(Bank_Data)
+    except:
+        return json.dumps({"error":"No minimo uma das colunas requisitadas para criar este gráfico não foram encontradas, isso acontece porque ela estava mal-formatada ou tinha poucos dados"}),400
+
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
 
     conn.close()
@@ -324,7 +366,11 @@ def ContactWithDurationRoute():
     else:
         return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
-    figure = DataVisualization.ContactWithDuration(Bank_Data)
+    try:
+        figure = DataVisualization.ContactWithDuration(Bank_Data)
+    except:
+        return json.dumps({"error":"No minimo uma das colunas requisitadas para criar este gráfico não foram encontradas, isso acontece porque ela estava mal-formatada ou tinha poucos dados"}),400
+
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
 
     conn.close()
@@ -355,8 +401,11 @@ def ContactWithAgeRoute():
         Bank_Data = pd.read_excel(file_path)
     else:
         return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
+    try:
+        figure = DataVisualization.ContactWithAge(Bank_Data)
+    except:
+        return json.dumps({"error":"No minimo uma das colunas requisitadas para criar este gráfico não foram encontradas, isso acontece porque ela estava mal-formatada ou tinha poucos dados"}),400
 
-    figure = DataVisualization.ContactWithAge(Bank_Data)
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
 
     conn.close()
@@ -388,7 +437,11 @@ def StatusCampaignRoute():
     else:
         return json.dumps({"error":"Nenhum dataset pós mineração de dados foi encontrado"}),412
 
-    figure = DataVisualization.StatusCampaign(Bank_Data)
+    try:
+        figure = DataVisualization.StatusCampaign(Bank_Data)
+    except:
+        return json.dumps({"error": "No minimo uma das colunas requisitadas para criar este gráfico não foram encontradas, isso acontece porque ela estava mal-formatada ou tinha poucos dados"}),400
+
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
 
     conn.close()

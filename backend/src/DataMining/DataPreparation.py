@@ -135,6 +135,42 @@ def Data_Preparation(Bank_Data):
         except:
             Bank_Data[columns]
 
+    lowerColumns = []
+
+    for i in Bank_Data.columns:
+        lowerColumns.append(i.lower())
+
+    Bank_Data.columns = lowerColumns
+
+    #Verificação das colunas existentes, se alguma dessas colunas não forem encontradas será retornado um erro ao usuário
+    Bank_Data['age']
+    Bank_Data['job']
+    Bank_Data['marital']
+    Bank_Data['education']
+    Bank_Data['default']
+    Bank_Data['balance']
+    Bank_Data['housing']
+    Bank_Data['loan']
+    Bank_Data['contact']
+    Bank_Data['day']
+    Bank_Data['month']
+    Bank_Data['duration']
+    Bank_Data['campaign']
+    Bank_Data['pdays']
+    Bank_Data['previous']
+    Bank_Data['poutcome']
+    Bank_Data['y']
+
+    #ColumnsBefore = Bank_Data.columns
+
+    #Procura pelas colunas que estejam com mais de 60% dos valores nulos
+    limitNaColumn = len(Bank_Data) * .60
+    Bank_Data = Bank_Data.dropna(thresh=limitNaColumn, axis=1)
+
+    #ColumnsAfter = Bank_Data.columns
+
+    #ColumnsWithAlteration= [x for x in ColumnsBefore if x not in ColumnsAfter]
+
     #Substitui o dado "Desconhecido" pelo dado Nulo do numpy para sua remoção, depois dessa substituição eles passam a ser de "Desconhecidos" para Nulos.
     #Se for necessário poderemos substituir a string 'unknown' por uma lista de palavras a serem substituidas por NAN
     Bank_Data = Bank_Data.replace('unknown',np.nan)
