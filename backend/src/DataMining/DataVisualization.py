@@ -147,7 +147,7 @@ def AgeWithLoan(Bank_Data):
 
     mpl.use("Agg")
     plt.figure(figsize = (13,8))
-    plt.title("Saldo médio por ano de cada profissão em euros")
+    plt.title("Volume dos clientes que tem emprestimos")
     plt.style.use("ggplot")
     sns.countplot(y = 'Age     Loan',data = AgeLoanDF, palette = "magma", alpha = 0.75)
     plt.xlabel("Quantidades de clientes")
