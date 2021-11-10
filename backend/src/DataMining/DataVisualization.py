@@ -24,6 +24,7 @@ def AgeWithBalance(Bank_Data):
     bytes_image = io.BytesIO()
     plt.savefig(bytes_image, format='png')
     bytes_image.seek(0)
+    plt.close()
     return bytes_image
 
 #Plota o gráfico da duração de chamada por idade
@@ -46,6 +47,7 @@ def AgeWithDuration(Bank_Data):
     bytes_image = io.BytesIO()
     plt.savefig(bytes_image, format='png')
     bytes_image.seek(0)
+    plt.close()
     return bytes_image
 
 def ClientsQuantityAge(Bank_Data):
@@ -70,6 +72,7 @@ def ClientsQuantityAge(Bank_Data):
     bytes_image = io.BytesIO()
     plt.savefig(bytes_image, format='png')
     bytes_image.seek(0)
+    plt.close()
     return bytes_image
 
 
@@ -91,6 +94,7 @@ def AgeMarital(Bank_Data):
     bytes_image = io.BytesIO()
     plt.savefig(bytes_image, format='png')
     bytes_image.seek(0)
+    plt.close()
     return bytes_image
 
 def JobsQuanity(Bank_Data):
@@ -115,6 +119,7 @@ def JobsQuanity(Bank_Data):
     bytes_image = io.BytesIO()
     plt.savefig(bytes_image, format='png')
     bytes_image.seek(0)
+    plt.close()
     return bytes_image
 
 def BalanceWithJob(Bank_Data):
@@ -135,6 +140,7 @@ def BalanceWithJob(Bank_Data):
     bytes_image = io.BytesIO()
     plt.savefig(bytes_image, format='png')
     bytes_image.seek(0)
+    plt.close()
     return bytes_image
 
 def AgeWithLoan(Bank_Data):
@@ -155,6 +161,7 @@ def AgeWithLoan(Bank_Data):
     bytes_image = io.BytesIO()
     plt.savefig(bytes_image, format='png')
     bytes_image.seek(0)
+    plt.close()
     return bytes_image
 
 def AgeWithHousing(Bank_Data):
@@ -181,6 +188,7 @@ def AgeWithHousing(Bank_Data):
     bytes_image = io.BytesIO()
     plt.savefig(bytes_image, format='png')
     bytes_image.seek(0)
+    plt.close()
     return bytes_image
 
 def AgeWithDefault(Bank_Data):
@@ -194,7 +202,6 @@ def AgeWithDefault(Bank_Data):
         tempArray.append(Bank_Data.iloc[line]['age_agroupment'] + " " + Bank_Data.iloc[line]['default'])
 
     AgeDefaultDF = pd.DataFrame({"Age Default": tempArray})
-
     mpl.use("Agg")
     plt.figure(figsize = (13,8))
     plt.style.use("ggplot")
@@ -207,6 +214,7 @@ def AgeWithDefault(Bank_Data):
     bytes_image = io.BytesIO()
     plt.savefig(bytes_image, format='png')
     bytes_image.seek(0)
+    plt.close()
     return bytes_image
 
 def ContactWithDuration(Bank_Data):
@@ -227,6 +235,7 @@ def ContactWithDuration(Bank_Data):
     bytes_image = io.BytesIO()
     plt.savefig(bytes_image, format='png')
     bytes_image.seek(0)
+    plt.close()
     return bytes_image
 
 def ContactWithAge(Bank_Data):
@@ -253,6 +262,7 @@ def ContactWithAge(Bank_Data):
     bytes_image = io.BytesIO()
     plt.savefig(bytes_image, format='png')
     bytes_image.seek(0)
+    plt.close()
     return bytes_image
 
 def StatusCampaign(Bank_Data):
@@ -281,4 +291,5 @@ def StatusCampaign(Bank_Data):
     bytes_image = io.BytesIO()
     plt.savefig(bytes_image, format='png')
     bytes_image.seek(0)
+    plt.close()
     return bytes_image

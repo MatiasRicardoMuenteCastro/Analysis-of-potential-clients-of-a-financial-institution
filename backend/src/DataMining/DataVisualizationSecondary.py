@@ -61,6 +61,7 @@ def BalanceWithBlueCollar(Bank_Data):
     bytes_image = io.BytesIO()
     plt.savefig(bytes_image, format='png')
     bytes_image.seek(0)
+    plt.close()
     return bytes_image
 
 def BalanceWithRetired(Bank_Data):
@@ -81,6 +82,7 @@ def BalanceWithRetired(Bank_Data):
     bytes_image = io.BytesIO()
     plt.savefig(bytes_image, format='png')
     bytes_image.seek(0)
+    plt.close()
     return bytes_image
 
 def BalanceWithManagement(Bank_Data):
@@ -118,6 +120,7 @@ def BalanceWithManagement(Bank_Data):
     bytes_image = io.BytesIO()
     plt.savefig(bytes_image, format='png')
     bytes_image.seek(0)
+    plt.close()
     return bytes_image
 
 
@@ -139,6 +142,7 @@ def BalanceWithTechnician(Bank_Data):
     bytes_image = io.BytesIO()
     plt.savefig(bytes_image, format='png')
     bytes_image.seek(0)
+    plt.close()
     return bytes_image
 
 def BalanceWithAdmin(Bank_Data):
@@ -159,6 +163,7 @@ def BalanceWithAdmin(Bank_Data):
     bytes_image = io.BytesIO()
     plt.savefig(bytes_image, format='png')
     bytes_image.seek(0)
+    plt.close()
     return bytes_image
 
 def BalanceWithServices(Bank_Data):
@@ -179,4 +184,5 @@ def BalanceWithServices(Bank_Data):
     bytes_image = io.BytesIO()
     plt.savefig(bytes_image, format='png')
     bytes_image.seek(0)
+    plt.close()
     return bytes_image
