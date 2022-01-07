@@ -3,7 +3,7 @@ Esse projeto tem o objetivo de fazer a análise de dados de uma instituição fi
 Também foi feito um site para que os gráficos estejam acessíveis sempre que um conjunto de dados atualizado estiver disponível, assim sempre que for necessário, novos gráficos com dados mais atuais podem ser gerados com alguns clicks.
 
 Tecnologias utilizadas:
-	Linguagem de programação:
+Linguagem de programação:<br>
     •	Python
 	Back-end:
     •	Flask
