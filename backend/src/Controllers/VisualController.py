@@ -40,7 +40,6 @@ def AgeWithBalanceRoute():
     except:
         return json.dumps({"error":"No minimo uma das colunas requisitadas para criar este gráfico não foram encontradas, isso acontece porque ela estava mal-formatada ou tinha poucos dados"}),400
 
-
     plot_url = base64.b64encode(figure.getvalue()).decode('utf8')
 
     conn.close()
