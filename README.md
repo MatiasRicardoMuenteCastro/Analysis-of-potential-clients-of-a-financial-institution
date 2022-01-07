@@ -4,15 +4,15 @@ Também foi feito um site para que os gráficos estejam acessíveis sempre que u
 
 Tecnologias utilizadas:<br>
 Linguagem de programação:<br>
-    •	Python<br>
-	Back-end:<br>
-    •	Flask<br>
-    • Sqlite3<br>
-  Mineração / Análise de dados:<br>
-    •	Pandas<br>
-    •	Seaborn<br>
-    •	Matplotlib<br>
-  Front-End:<br>
-    •	Javascript<br>
-    •	HTML<br>
-    •	CSS<br>
+•Python<br><br>
+Back-end:<br>
+•Flask<br>
+•Sqlite3<br><br>
+Mineração / Análise de dados:<br>
+•Pandas<br>
+•Seaborn<br>
+•Matplotlib<br><br>
+Front-End:<br>
+•Javascript<br>
+•HTML<br>
+•CSS<br>
