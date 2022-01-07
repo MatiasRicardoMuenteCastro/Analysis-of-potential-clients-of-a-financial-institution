@@ -1,17 +1,32 @@
 <b>Tela de Login</b>
 ![alt text](https://i.ibb.co/t8c3b8N/Login.png)
 <br>
+<br>
+<br>
+<br>
 <b>Tela de Gráficos Principais</b>
 ![alt text](https://i.ibb.co/SfTzDMD/Principal-1.png)
+<br>
+<br>
+<br>
 <br>
 <b>Tela de Gráficos Secundários</b>
 ![alt text](https://i.ibb.co/3Ry3Tnw/Secundario-1.png)
 <br>
+<br>
+<br>
+<br>
 <b>Tela de Upload do Dataset</b>
 ![alt text](https://i.ibb.co/ZB6cV4d/Upload.png)
 <br>
+<br>
+<br>
+<br>
 <b>Tela de Gerenciamento de Usuários</b>
 ![alt text](https://i.ibb.co/Gp8skWb/Gerenciamento-de-usu-rios.png)
+<br>
+<br>
+<br>
 <br>
 # Analysis-of-potential-clients-of-a-financial-institution
 Esse projeto tem o objetivo de fazer a análise de dados de uma instituição financeira fictícia de Portugal, o Dataset usado como base foi retirado de um site chamado Kaggle e as informações foram retiradas a partir de gráficos feitos usando as bibliotecas Seaborn e Matplotlib, da linguagem de programação Python.
