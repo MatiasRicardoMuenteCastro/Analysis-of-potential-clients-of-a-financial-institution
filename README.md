@@ -1,4 +1,5 @@
 ![alt text](https://i.ibb.co/t8c3b8N/Login.png)
+<br>
 ![alt text](https://i.ibb.co/SfTzDMD/Principal-1.png)
 # Analysis-of-potential-clients-of-a-financial-institution
 Esse projeto tem o objetivo de fazer a análise de dados de uma instituição financeira fictícia de Portugal, o Dataset usado como base foi retirado de um site chamado Kaggle e as informações foram retiradas a partir de gráficos feitos usando as bibliotecas Seaborn e Matplotlib, da linguagem de programação Python.
