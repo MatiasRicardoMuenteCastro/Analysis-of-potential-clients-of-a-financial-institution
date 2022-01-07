@@ -3,16 +3,16 @@ Esse projeto tem o objetivo de fazer a análise de dados de uma instituição fi
 Também foi feito um site para que os gráficos estejam acessíveis sempre que um conjunto de dados atualizado estiver disponível, assim sempre que for necessário, novos gráficos com dados mais atuais podem ser gerados com alguns clicks.
 
 <h1>Tecnologias utilizadas:<br></h1>
-Linguagem de programação:<br>
+<h2>Linguagem de programação:<br></h2>
 •Python<br><br>
-Back-end:<br>
+<h2>Back-end:<br></h2>
 •Flask<br>
 •Sqlite3<br><br>
-Mineração / Análise de dados:<br>
+<h2>Mineração / Análise de dados:<br></h2>
 •Pandas<br>
 •Seaborn<br>
 •Matplotlib<br><br>
-Front-End:<br>
+<h2>Front-End:<br></h2>
 •Javascript<br>
 •HTML<br>
 •CSS<br>
