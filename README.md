@@ -4,14 +4,14 @@ Também foi feito um site para que os gráficos estejam acessíveis sempre que u
 
 <h1>Tecnologias utilizadas:<br></h1>
 <h3>Linguagem de programação:<br></h3>
-•Python<br><br>
+•Python<br>
 <h3>Back-end:<br></h3>
 •Flask<br>
-•Sqlite3<br><br>
+•Sqlite3<br>
 <h3>Mineração / Análise de dados:<br></h3>
 •Pandas<br>
 •Seaborn<br>
-•Matplotlib<br><br>
+•Matplotlib<br>
 <h3>Front-End:<br></h3>
 •Javascript<br>
 •HTML<br>
