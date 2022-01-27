@@ -1,8 +1,8 @@
-from backend.src.Controllers.VisualController import bp
-from backend.src.Controllers.VisualControllerSecundary import bp2
-from backend.src.Controllers.UserController import bpUser
-from backend.src.Controllers.FilesController import bpFiles
-from backend.src.Controllers.DataMinningController import bpDM
+from Controllers.VisualController import bp
+from Controllers.VisualControllerSecundary import bp2
+from Controllers.UserController import bpUser
+from Controllers.FilesController import bpFiles
+from Controllers.DataMinningController import bpDM
 
 from flask import Flask
 from flask_cors import CORS

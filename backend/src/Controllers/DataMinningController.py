@@ -1,4 +1,4 @@
-from backend.src.DataMining.DataPreparation import Data_Preparation
+from DataMining.DataPreparation import Data_Preparation
 from werkzeug.utils import secure_filename
 from flask import Blueprint,request
 import pandas as pd

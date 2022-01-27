@@ -1,4 +1,4 @@
-from backend.src.DataMining import DataVisualizationSecondary
+from DataMining import DataVisualizationSecondary
 from flask import Blueprint,request
 import sqlite3
 import pandas as pd
